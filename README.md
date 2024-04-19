@@ -15,3 +15,7 @@ This is a sibling project to [Chinese-LLaMA-Alpaca](https://github.com/ymcui/Chi
 - Chinese-LLaMA-Alpaca：https://github.com/ymcui/Chinese-LLaMA-Alpaca
 - Chinese-LLaMA-Alpaca-2：https://github.com/ymcui/Chinese-LLaMA-Alpaca-2
 - Chinese-Mixtral：https://github.com/ymcui/Chinese-Mixtral
+
+## Disclaimer
+
+Chinese-LLaMA-Alpaca-3 is the name of our open-source project, which is NOT the name of the models to be released. We strictly comply with the [Llama 3 license](https://github.com/meta-llama/llama3/blob/main/LICENSE) on model naming when we finish training our models.
