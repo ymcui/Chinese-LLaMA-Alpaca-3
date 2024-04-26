@@ -1,0 +1,6 @@
+peft==0.7.1
+torch>=2.0.1
+transformers>=4.40.0
+bitsandbytes
+datasets
+safetensors
