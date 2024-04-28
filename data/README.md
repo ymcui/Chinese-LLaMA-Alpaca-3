@@ -1,5 +1,17 @@
 # 数据 Data
 
+### alpaca_zh_51k
+
+使用gpt-3.5翻译的Alpaca数据
+
+下载 / Download: [alpaca_zh_51k](https://huggingface.co/datasets/hfl/alpaca_zh_51k)
+
+### stem_zh_instruction
+
+使用gpt-3.5爬取的STEM数据，包含物理、化学、医学、生物学、地球科学
+
+下载 / Download: [stem_zh_instruction](https://huggingface.co/datasets/hfl/stem_zh_instruction)
+
 ### ruozhiba_qa2449_gpt4turbo.json
 
 内容：ruozhiba 指令数据（2449条）
@@ -11,3 +23,4 @@ Description: The instruction data is crawled using `gpt-4-turbo-20240409` for th
 [^1]: https://arxiv.org/abs/2403.18058
 [^2]: https://huggingface.co/datasets/LooksJuicy/ruozhiba
 
+下载 / Download: [ruozhiba_gpt4_turbo](https://huggingface.co/datasets/hfl/ruozhiba_gpt4_turbo)
