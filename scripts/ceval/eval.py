@@ -39,9 +39,7 @@ def main(args, evaluator, take):
         correct_ratio, answers = evaluator.eval_subject(subject_name, val_df, dev_df,
             save_result_dir=save_result_dir if args.do_save_csv else None,
             few_shot=args.few_shot,
-            cot=args.cot,
             with_prompt=args.with_prompt,
-            constrained_decoding=args.constrained_decoding,
             do_test=args.do_test)
         print(f"Subject: {subject_name}")
         print(f"Acc: {correct_ratio}")
