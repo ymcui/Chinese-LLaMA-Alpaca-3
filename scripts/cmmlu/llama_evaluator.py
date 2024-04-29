@@ -11,7 +11,7 @@ from transformers import GenerationConfig
 
 
 DEFAULT_SYSTEM_PROMPT = """You are a helpful assistant. 你是一个乐于助人的助手。"""
-system_format='<|begin_of_text|><|start_header_id|>system<|end_header_id|>\n\n{content}<|eot_id|>'
+system_format='<|start_header_id|>system<|end_header_id|>\n\n{content}<|eot_id|>'
 user_format='<|start_header_id|>user<|end_header_id|>\n\n{content}<|eot_id|><|start_header_id|>assistant<|end_header_id|>\n\n'
 assistant_format='{content}<|eot_id|>'
 
@@ -152,7 +152,7 @@ class Llama_Evaluator():
     def generate_alpaca3_few_shot_prompt(self, history, dev_df, subject=None):
         prompt = history
         prompt_template = (
-            "<|begin_of_text|><|start_header_id|>system<|end_header_id|>\n\n{system_prompt}<|eot_id|>"
+            "<|start_header_id|>system<|end_header_id|>\n\n{system_prompt}<|eot_id|>"
             "<|start_header_id|>user<|end_header_id|>\n\n{instruction}<|eot_id|><|start_header_id|>assistant<|end_header_id|>\n\n"
             "好的，我会结合{subject}相关知识回答<|eot_id|>"
         )
