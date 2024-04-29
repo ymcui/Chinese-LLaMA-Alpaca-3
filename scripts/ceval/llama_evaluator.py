@@ -11,7 +11,7 @@ from transformers import GenerationConfig
 
 
 DEFAULT_SYSTEM_PROMPT = """You are a helpful assistant. 你是一个乐于助人的助手。"""
-system_format='<|begin_of_text|><|start_header_id|>system<|end_header_id|>\n\n{content}<|eot_id|>'
+system_format='<|start_header_id|>system<|end_header_id|>\n\n{content}<|eot_id|>'
 user_format='<|start_header_id|>user<|end_header_id|>\n\n{content}<|eot_id|><|start_header_id|>assistant<|end_header_id|>\n\n'
 assistant_format='{content}<|eot_id|>'
 TASK2DESC = {
