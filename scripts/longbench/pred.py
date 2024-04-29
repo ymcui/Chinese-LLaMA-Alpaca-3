@@ -9,27 +9,28 @@ from transformers import BitsAndBytesConfig
 from tqdm import tqdm
 import os
 import argparse
-import sys
-parent_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-sys.path.append(parent_dir)
+
+
 dir_path = os.path.dirname(os.path.realpath(__file__))
+DEFAULT_SYSTEM_PROMPT = """You are a helpful assistant. 你是一个乐于助人的助手。"""
+system_format='<|start_header_id|>system<|end_header_id|>\n\n{content}<|eot_id|>'
+user_format='<|start_header_id|>user<|end_header_id|>\n\n{content}<|eot_id|><|start_header_id|>assistant<|end_header_id|>\n\n'
+assistant_format='{content}<|eot_id|>'
+
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--model_path', type=str)
-parser.add_argument('--load_in_4bit',action='store_true')
-parser.add_argument('--load_in_8bit',action='store_true')
 parser.add_argument('--predict_on',type=str, default='zh')
 parser.add_argument('--output_dir',type=str, default='pred')
 parser.add_argument('--gpus',type=str, default=None)
 parser.add_argument('--max_length',type=int, default=4096-512)
+parser.add_argument('--with_inst', choices=['true','false','auto'], default = 'false',
+                    help="Whether use the system prompt and template of Chinese-Alpaca-2 when constructing the instructions.")
 parser.add_argument('--e', action='store_true', help="Evaluate on LongBench-E")
-parser.add_argument('--use_flash_attention_2', action='store_true', help="Use flash attention to replace the mixtral attention")
-
+parser.add_argument('--use_flash_attention_2', action='store_true', help="Use flash attention to replace the LLaMA attention")
 args = parser.parse_args()
 
 model_path = args.model_path
-load_in_4bit = args.load_in_4bit
-load_in_8bit = args.load_in_8bit
 predict_on = args.predict_on
 output_dir = args.output_dir
 gpus=args.gpus
@@ -44,6 +45,12 @@ TOP_K = 40
 if gpus is not None:
     os.environ["CUDA_VISIBLE_DEVICES"] = gpus
 
+def fill_llama3_prompt_template(instruction, with_inst=True, system_prompt=DEFAULT_SYSTEM_PROMPT):
+    if with_inst is False:
+        return instruction
+    else:
+        return system_format.format(content=system_prompt) + user_format.format(content=instruction)
+
 
 def get_pred(model, tokenizer, data, max_length, max_gen, prompt_format, dataset, device):
     preds = []
@@ -54,6 +61,14 @@ def get_pred(model, tokenizer, data, max_length, max_gen, prompt_format, dataset
         if len(tokenized_prompt) > max_length:
             half = int(max_length/2)
             prompt = tokenizer.decode(tokenized_prompt[:half], skip_special_tokens=True)+tokenizer.decode(tokenized_prompt[-half:], skip_special_tokens=True)
+        if args.with_inst == 'auto':
+            if dataset not in ["trec", "triviaqa", "samsum", "lsht", "lcc", "repobench-p"]: # chat models are better off without build prompts on these tasks
+                prompt = fill_llama3_prompt_template(instruction=prompt)
+        elif args.with_inst == 'true':
+            prompt = fill_llama3_prompt_template(instruction=prompt, with_inst=True)
+        else:
+            prompt = fill_llama3_prompt_template(instruction=prompt, with_inst=False)
+
         input_data = tokenizer(prompt, truncation=False, return_tensors="pt").to(device)
         context_length = input_data.input_ids.shape[-1]
         if dataset == "samsum": # prevent illegal output on samsum (model endlessly repeat "\nDialogue"), might be a prompting issue
@@ -68,7 +83,6 @@ def get_pred(model, tokenizer, data, max_length, max_gen, prompt_format, dataset
                 temperature=TEMPERATURE,
                 min_length=context_length+1,
                 eos_token_id=[tokenizer.eos_token_id, tokenizer.encode("\n", add_special_tokens=False)[-1]],
-                pad_token_id=tokenizer.eos_token_id
             )[0]
         else:
             output = model.generate(
@@ -76,16 +90,16 @@ def get_pred(model, tokenizer, data, max_length, max_gen, prompt_format, dataset
                 max_new_tokens=max_gen,
                 num_beams=1,
                 do_sample=DO_SAMPLE,
-                repetition_penalty = REPETITION_PENALTY,
-                top_p = TOP_P,
-                top_k = TOP_K,
-                temperature=TEMPERATURE,
-                pad_token_id=tokenizer.eos_token_id
+                repetition_penalty=REPETITION_PENALTY,
+                top_p=TOP_P,
+                top_k=TOP_K,
+                temperature=TEMPERATURE
             )[0]
         pred = tokenizer.decode(output[context_length:], skip_special_tokens=True)
-        #print(pred)
+        # print(pred)
         preds.append({"pred": pred, "answers": json_obj["answers"], "all_classes": json_obj["all_classes"], "length": json_obj["length"]})
     return preds
+
 
 def seed_everything(seed):
     torch.manual_seed(seed)
@@ -144,7 +158,8 @@ if __name__ == '__main__':
         torch_dtype=load_type,
         low_cpu_mem_usage=True,
         device_map='auto',
-        attn_implementation="flash_attention_2" if args.use_flash_attention_2 else "sdpa"
+        use_flash_attention_2=args.use_flash_attention_2,
+        trust_remote_code=True
         )
     model = model.eval()
     model_vocab_size = model.get_input_embeddings().weight.size(0)
