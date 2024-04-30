@@ -29,7 +29,7 @@
 
 ## 新闻
 
-**[2024/04/30]  发布Llama-3-Chinese-8B基座模型和Llama-3-Chinese-8B-Instruct指令模型。详情查看：[📚v1.0版本发布日志](https://github.com/ymcui/Chinese-LLaMA-Alpaca-3/releases/tag/v1.0)**
+**[2024/04/30]  发布Llama-3-Chinese-8B基座模型和Llama-3-Chinese-8B-Instruct指令模型。详情查看：[📚v1.0版本发布日志](https://github.com/ymcui/Chinese-LLaMA-Alpaca-3/releases/tag/v1.0)**  [📢 GGUF版临时下架，待后续更新](https://github.com/ymcui/Chinese-LLaMA-Alpaca-3/discussions/9)
 
 [2024/04/19] 🚀 正式启动Chinese-LLaMA-Alpaca-3项目
 
