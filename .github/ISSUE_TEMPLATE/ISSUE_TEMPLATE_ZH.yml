@@ -37,7 +37,7 @@ body:
       description: 请提供问题涉及的具体模型。
       options:
         - Llama-3-Chinese-8B（基座模型）
-        - Llama-3-Chinese-Instruct-8B（基座模型）
+        - Llama-3-Chinese-8B-Instruct（指令模型）
         - Others
   - type: dropdown
     id: operating-system

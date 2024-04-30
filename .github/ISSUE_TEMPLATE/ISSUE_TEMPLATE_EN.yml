@@ -37,7 +37,7 @@ body:
       description: Please provide the type of base model. For issues related to multiple models, please select the most appropriate one and specify all models in the main text.
       options:
         - Llama-3-Chinese-8B (Base Model)
-        - Llama-3-Chinese-Instruct-8B (Chat Model)
+        - Llama-3-Chinese-8B-Instruct (Chat Model)
         - Others
   - type: dropdown
     id: operating-system
