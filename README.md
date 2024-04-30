@@ -29,7 +29,7 @@
 
 ## 新闻
 
-**[2024/04/30]  发布Llama-3-Chinese-8B基座模型和Llama-3-Chinese-8B-Instruct指令模型。详情查看：[📚v1.0版本发布日志](https://github.com/ymcui/Chinese-LLaMA-Alpaca-3/releases/tag/v1.0)**  [📢 GGUF版临时下架，待后续更新](https://github.com/ymcui/Chinese-LLaMA-Alpaca-3/discussions/9)
+**[2024/04/30]  发布Llama-3-Chinese-8B基座模型和Llama-3-Chinese-8B-Instruct指令模型。详情查看：[📚v1.0版本发布日志](https://github.com/ymcui/Chinese-LLaMA-Alpaca-3/releases/tag/v1.0)** 
 
 [2024/04/19] 🚀 正式启动Chinese-LLaMA-Alpaca-3项目
 
@@ -92,10 +92,10 @@
 
 ### 下载地址
 
-| 模型名称                  |   类型   |                    参数量                    |                    完整版                    |                    LoRA版                    |                    GGUF版                    |
-| :------------------------ | :------: | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: |
-| **Llama-3-Chinese-8B** | 基座模型 | 8B | [[🤗Hugging Face]](https://huggingface.co/hfl/llama-3-chinese-8b)<br/> [[🤖ModelScope]](https://modelscope.cn/models/ChineseAlpacaGroup/llama-3-chinese-8b) | [[🤗Hugging Face]](https://huggingface.co/hfl/llama-3-chinese-8b-lora)<br/> [[🤖ModelScope]](https://modelscope.cn/models/ChineseAlpacaGroup/llama-3-chinese-8b-lora) | [[🤗Hugging Face]](https://huggingface.co/hfl/llama-3-chinese-8b-gguf)<br/> [[🤖ModelScope]](https://modelscope.cn/models/ChineseAlpacaGroup/llama-3-chinese-8b-gguf) |
-| **Llama-3-Chinese-8B-Instruct** | 指令模型 | 8B | [[🤗Hugging Face]](https://huggingface.co/hfl/llama-3-chinese-8b-instruct)<br/> [[🤖ModelScope]](https://modelscope.cn/models/ChineseAlpacaGroup/llama-3-chinese-8b-instruct) | [[🤗Hugging Face]](https://huggingface.co/hfl/llama-3-chinese-8b-instruct-lora)<br/> [[🤖ModelScope]](https://modelscope.cn/models/ChineseAlpacaGroup/llama-3-chinese-8b-instruct-lora) | [[🤗Hugging Face]](https://huggingface.co/hfl/llama-3-chinese-8b-instruct-gguf)<br/> [[🤖ModelScope]](https://modelscope.cn/models/ChineseAlpacaGroup/llama-3-chinese-8b-instruct-gguf) |
+| 模型名称                  |   类型   |                    完整版                    |                    LoRA版                    |                    GGUF版                    |
+| :------------------------ | :------: | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: |
+| **Llama-3-Chinese-8B** | 基座模型 | [[🤗Hugging Face]](https://huggingface.co/hfl/llama-3-chinese-8b)<br/> [[🤖ModelScope]](https://modelscope.cn/models/ChineseAlpacaGroup/llama-3-chinese-8b) | [[🤗Hugging Face]](https://huggingface.co/hfl/llama-3-chinese-8b-lora)<br/> [[🤖ModelScope]](https://modelscope.cn/models/ChineseAlpacaGroup/llama-3-chinese-8b-lora) | [[🤗Hugging Face]](https://huggingface.co/hfl/llama-3-chinese-8b-gguf)<br/> [[🤖ModelScope]](https://modelscope.cn/models/ChineseAlpacaGroup/llama-3-chinese-8b-gguf) |
+| **Llama-3-Chinese-8B-Instruct** | 指令模型 | [[🤗Hugging Face]](https://huggingface.co/hfl/llama-3-chinese-8b-instruct)<br/> [[🤖ModelScope]](https://modelscope.cn/models/ChineseAlpacaGroup/llama-3-chinese-8b-instruct) | [[🤗Hugging Face]](https://huggingface.co/hfl/llama-3-chinese-8b-instruct-lora)<br/> [[🤖ModelScope]](https://modelscope.cn/models/ChineseAlpacaGroup/llama-3-chinese-8b-instruct-lora) | [[🤗Hugging Face]](https://huggingface.co/hfl/llama-3-chinese-8b-instruct-gguf)<br/> [[🤖ModelScope]](https://modelscope.cn/models/ChineseAlpacaGroup/llama-3-chinese-8b-instruct-gguf) |
 
 模型类型说明：
 
@@ -194,13 +194,13 @@
 
 在llama.cpp下，测试了Llama-3-Chinese-8B（基座模型）的量化性能，如下表所示。实测速度相比二代Llama-2-7B略慢。
 
-|               |    F16 |   Q8_0 |   Q6_K |   Q5_K |   Q5_0 |   Q4_K |   Q4_0 |   Q3_K |    Q2_K |
-| ------------- | -----: | -----: | -----: | -----: | -----: | -----: | -----: | -----: | ------: |
-| **Size (GB)** |  14.97 |   7.95 |   6.14 |   5.34 |   5.21 |   4.58 |   4.34 |   3.74 |    2.96 |
-| **BPW**       |  16.00 |   8.50 |   6.56 |   5.70 |   5.57 |   4.89 |   4.64 |   4.00 |    3.16 |
-| **PPL**       | 7.6389 | 7.6512 | 7.6600 | 7.7062 | 7.7975 | 7.8897 | 8.2513 | 8.6303 | 17.7212 |
-| **PP Speed**  |   5.99 |   6.10 |   7.17 |   7.34 |   6.65 |   6.38 |   6.00 |   6.85 |    6.43 |
-| **TG Speed**  |  44.03 |  26.08 |  21.61 |  22.33 |  20.93 |  18.93 |  17.09 |  22.50 |   19.21 |
+|               |   F16 |  Q8_0 |  Q6_K |  Q5_K |  Q5_0 |  Q4_K |  Q4_0 |  Q3_K |   Q2_K |
+| ------------- | ----: | ----: | ----: | ----: | ----: | ----: | ----: | ----: | -----: |
+| **Size (GB)** | 14.97 |  7.95 |  6.14 |  5.34 |  5.21 |  4.58 |  4.34 |  3.74 |   2.96 |
+| **BPW**       | 16.00 |  8.50 |  6.56 |  5.70 |  5.57 |  4.89 |  4.64 |  4.00 |   3.16 |
+| **PPL**       | 5.130 | 5.135 | 5.148 | 5.181 | 5.222 | 5.312 | 5.549 | 5.755 | 11.859 |
+| **PP Speed**  |  5.99 |  6.10 |  7.17 |  7.34 |  6.65 |  6.38 |  6.00 |  6.85 |   6.43 |
+| **TG Speed**  | 44.03 | 26.08 | 21.61 | 22.33 | 20.93 | 18.93 | 17.09 | 22.50 |  19.21 |
 
 > [!NOTE]
 >
