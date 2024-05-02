@@ -126,6 +126,7 @@
 ### 生成效果评测
 
 - 本项目仿照[Fastchat Chatbot Arena](https://chat.lmsys.org/?arena)推出了模型在线对战平台，可浏览和评测模型回复质量。对战平台提供了胜率、Elo评分等评测指标，并且可以查看两两模型的对战胜率等结果。**⚔️ 模型竞技场：[http://llm-arena.ymcui.com](http://llm-arena.ymcui.com/)**
+- examples目录中提供了Llama-3-Chinese-8B-Instruct和Chinese-Mixtral-Instruct的输出样例，并通过GPT-4-turbo进行了打分对比，**Llama-3-Chinese-8B-Instruct平均得分为8.1、Chinese-Mixtral-Instruct平均得分为7.8**。**📄 输出样例对比：[examples](https://github.com/ymcui/Chinese-LLaMA-Alpaca-3/blob/main/examples)**
 - 本项目已入驻机器之心SOTA!模型平台，后期将实现在线体验：https://sota.jiqizhixin.com/project/chinese-llama-alpaca-3
 
 

@@ -126,6 +126,7 @@ To evaluate the effectiveness of the related models, this project conducted both
 ### Generative Performance Evaluation
 
 - This project has launched an online model battle platform, modeled after the [Fastchat Chatbot Arena](https://chat.lmsys.org/?arena), where users can browse and evaluate the quality of model responses. The battle platform provides metrics such as win rates and Elo scores, and allows viewing the win rates between different models. **⚔️ Model Arena: [http://llm-arena.ymcui.com](http://llm-arena.ymcui.com/)**
+- The examples directory provides output samples of Llama-3-Chinese-8B-Instruct and Chinese-Mixtral-Instruct, and compares scores using GPT-4-turbo, **with Llama-3-Chinese-8B-Instruct averaging a score of 8.1 and  Chinese-Mixtral-Instruct averaging 7.8**. **📄 Output Sample Comparison: [examples](https://github.com/ymcui/Chinese-LLaMA-Alpaca-3/blob/main/examples)**
 - This project has joined the Machine Heart SOTA! Model platform, with online experiences to be implemented later: https://sota.jiqizhixin.com/project/chinese-llama-alpaca-3
 
 
