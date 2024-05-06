@@ -1,7 +1,6 @@
 import logging
 import os
-from dataclasses import dataclass
-from typing import Dict, Sequence, Union, List
+from typing import Union, List
 import datasets
 import torch
 from datasets import load_dataset, concatenate_datasets
@@ -26,9 +25,9 @@ def build_instruction_dataset(data_path: Union[List[str],str],
     def tokenization(examples):
         sources = []
         targets = []
-        for instruction, input, output in zip(examples['instruction'],examples['input'],examples['output']):
-            if input is not None and input !="":
-                instruction = instruction+'\n'+input
+        for instruction, input_text, output in zip(examples['instruction'],examples['input'],examples['output']):
+            if input_text is not None and input_text !="":
+                instruction = instruction+'\n'+input_text
             source = system_format.format(content=DEFAULT_SYSTEM_PROMPT) + user_format.format(content=instruction)
             target = output
 
@@ -43,7 +42,6 @@ def build_instruction_dataset(data_path: Union[List[str],str],
         for s,t in zip(tokenized_sources['input_ids'],tokenized_targets['input_ids']):
             input_ids = torch.LongTensor(s + t)[:max_seq_length]
             labels = torch.LongTensor([IGNORE_INDEX] * len(s) + t)[:max_seq_length]
-            assert len(input_ids) == len(labels)
             all_input_ids.append(input_ids)
             all_labels.append(labels)
 
