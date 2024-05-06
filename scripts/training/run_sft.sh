@@ -1,6 +1,6 @@
 #!/bin/bash
 ## 运行脚本前请仔细阅读wiki(https://github.com/ymcui/Chinese-LLaMA-Alpaca-3/wiki/sft_scripts_zh)
-## Read the wiki(https://github.com/ymcui/Chinese-LLaMA-Alpaca-3/wiki/sft_scripts_zh) carefully before running the script
+## Read the wiki(https://github.com/ymcui/Chinese-LLaMA-Alpaca-3/wiki/sft_scripts_en) carefully before running the script
 lr=1e-4
 lora_rank=64
 lora_alpha=128
