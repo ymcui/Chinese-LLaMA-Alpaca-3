@@ -29,7 +29,9 @@
 
 ## 新闻
 
-**[2024/04/30]  发布Llama-3-Chinese-8B基座模型和Llama-3-Chinese-8B-Instruct指令模型。详情查看：[📚v1.0版本发布日志](https://github.com/ymcui/Chinese-LLaMA-Alpaca-3/releases/tag/v1.0)** 
+**[2024/05/07]  添加预训练脚本、指令精调脚本。详情查看：[📚v1.1版本发布日志](https://github.com/ymcui/Chinese-LLaMA-Alpaca-3/releases/tag/v1.1)** 
+
+[2024/04/30]  发布Llama-3-Chinese-8B基座模型和Llama-3-Chinese-8B-Instruct指令模型。详情查看：[📚v1.0版本发布日志](https://github.com/ymcui/Chinese-LLaMA-Alpaca-3/releases/tag/v1.0)
 
 [2024/04/19] 🚀 正式启动Chinese-LLaMA-Alpaca-3项目
 
@@ -92,10 +94,10 @@
 
 ### 下载地址
 
-| 模型名称                  |   类型   |                    完整版                    |                    LoRA版                    |                    GGUF版                    |
-| :------------------------ | :------: | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: |
-| **Llama-3-Chinese-8B** | 基座模型 | [[🤗Hugging Face]](https://huggingface.co/hfl/llama-3-chinese-8b)<br/> [[🤖ModelScope]](https://modelscope.cn/models/ChineseAlpacaGroup/llama-3-chinese-8b) | [[🤗Hugging Face]](https://huggingface.co/hfl/llama-3-chinese-8b-lora)<br/> [[🤖ModelScope]](https://modelscope.cn/models/ChineseAlpacaGroup/llama-3-chinese-8b-lora) | [[🤗Hugging Face]](https://huggingface.co/hfl/llama-3-chinese-8b-gguf)<br/> [[🤖ModelScope]](https://modelscope.cn/models/ChineseAlpacaGroup/llama-3-chinese-8b-gguf) |
-| **Llama-3-Chinese-8B-Instruct** | 指令模型 | [[🤗Hugging Face]](https://huggingface.co/hfl/llama-3-chinese-8b-instruct)<br/> [[🤖ModelScope]](https://modelscope.cn/models/ChineseAlpacaGroup/llama-3-chinese-8b-instruct) | [[🤗Hugging Face]](https://huggingface.co/hfl/llama-3-chinese-8b-instruct-lora)<br/> [[🤖ModelScope]](https://modelscope.cn/models/ChineseAlpacaGroup/llama-3-chinese-8b-instruct-lora) | [[🤗Hugging Face]](https://huggingface.co/hfl/llama-3-chinese-8b-instruct-gguf)<br/> [[🤖ModelScope]](https://modelscope.cn/models/ChineseAlpacaGroup/llama-3-chinese-8b-instruct-gguf) |
+| 模型名称                  |                    完整版                    |                    LoRA版                    |                    GGUF版                    |
+| :------------------------ | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: |
+| **Llama-3-Chinese-8B**<br/>(基座模型) | [[🤗Hugging Face]](https://huggingface.co/hfl/llama-3-chinese-8b)<br/> [[🤖ModelScope]](https://modelscope.cn/models/ChineseAlpacaGroup/llama-3-chinese-8b)<br/>[[wisemodel]](https://wisemodel.cn/models/ChineseAlpacaGroup/llama-3-chinese-8b) | [[🤗Hugging Face]](https://huggingface.co/hfl/llama-3-chinese-8b-lora)<br/> [[🤖ModelScope]](https://modelscope.cn/models/ChineseAlpacaGroup/llama-3-chinese-8b-lora)<br/>[[wisemodel]](https://wisemodel.cn/models/ChineseAlpacaGroup/llama-3-chinese-8b-lora) | [[🤗Hugging Face]](https://huggingface.co/hfl/llama-3-chinese-8b-gguf)<br/> [[🤖ModelScope]](https://modelscope.cn/models/ChineseAlpacaGroup/llama-3-chinese-8b-gguf) |
+| **Llama-3-Chinese-8B-Instruct**<br/>(指令模型) | [[🤗Hugging Face]](https://huggingface.co/hfl/llama-3-chinese-8b-instruct)<br/> [[🤖ModelScope]](https://modelscope.cn/models/ChineseAlpacaGroup/llama-3-chinese-8b-instruct)<br/>[[wisemodel]](https://wisemodel.cn/models/ChineseAlpacaGroup/llama-3-chinese-8b-instruct) | [[🤗Hugging Face]](https://huggingface.co/hfl/llama-3-chinese-8b-instruct-lora)<br/> [[🤖ModelScope]](https://modelscope.cn/models/ChineseAlpacaGroup/llama-3-chinese-8b-instruct-lora)<br/>[[wisemodel]](https://wisemodel.cn/models/ChineseAlpacaGroup/llama-3-chinese-8b-instruct-lora) | [[🤗Hugging Face]](https://huggingface.co/hfl/llama-3-chinese-8b-instruct-gguf)<br/> [[🤖ModelScope]](https://modelscope.cn/models/ChineseAlpacaGroup/llama-3-chinese-8b-instruct-gguf) |
 
 模型类型说明：
 
@@ -136,43 +138,43 @@
 
 [C-Eval](https://cevalbenchmark.com)是一个全面的中文基础模型评估套件，其中验证集和测试集分别包含1.3K和12.3K个选择题，涵盖52个学科。C-Eval推理代码请参考本项目：[📖GitHub Wiki](https://github.com/ymcui/Chinese-LLaMA-Alpaca-3/wiki/ceval_zh)
 
-| Models             | 参数量 | 类型 | Valid (0-shot) | Valid (5-shot) | Test (0-shot) | Test (5-shot) |
-| ------------------------ | :------------: | :------------: | :-----------: | :-----------: | :-----------: | :-----------: |
-| **Llama-3-Chinese-8B-Instruct** | 8B | 指令 | 49.3 | 51.5 | 48.3 | 49.4 |
-| **Llama-3-Chinese-8B** | 8B | 基座 | 47.0 | 50.5 | 46.1 | 49.0 |
-| [Llama-3-8B](https://huggingface.co/meta-llama/Meta-Llama-3-8B) | 8B | 基座 | 49.3 | 51.2 | 46.1 | 49.4 |
-| [Chinese-Mixtral-Instruct](https://github.com/ymcui/Chinese-Mixtral) | 8x7B | 指令 | 51.7 | 55.0 | 50.0 | 51.5 |
-| [Chinese-Mixtral](https://github.com/ymcui/Chinese-Mixtral) | 8x7B | 基座 | 45.8 | 54.2 | 43.1 | 49.1 |
-| [Chinese-Alpaca-2-13B](https://github.com/ymcui/Chinese-LLaMA-Alpaca-2) | 13B | 指令 | 44.3 | 45.9 | 42.6 | 44.0 |
-| [Chinese-LLaMA-2-13B](https://github.com/ymcui/Chinese-LLaMA-Alpaca-2) | 13B | 基座 | 40.6 | 42.7 | 38.0 | 41.6 |
+| Models             | 参数量 | Valid (0-shot) | Valid (5-shot) | Test (0-shot) | Test (5-shot) |
+| ------------------------ | :------------: | :-----------: | :-----------: | :-----------: | :-----------: |
+| **Llama-3-Chinese-8B-Instruct** | 8B | 49.3 | 51.5 | 48.3 | 49.4 |
+| **Llama-3-Chinese-8B** | 8B | 47.0 | 50.5 | 46.1 | 49.0 |
+| [Llama-3-8B](https://huggingface.co/meta-llama/Meta-Llama-3-8B) | 8B | 49.3 | 51.2 | 46.1 | 49.4 |
+| [Chinese-Mixtral-Instruct](https://github.com/ymcui/Chinese-Mixtral) | 8x7B | 51.7 | 55.0 | 50.0 | 51.5 |
+| [Chinese-Mixtral](https://github.com/ymcui/Chinese-Mixtral) | 8x7B | 45.8 | 54.2 | 43.1 | 49.1 |
+| [Chinese-Alpaca-2-13B](https://github.com/ymcui/Chinese-LLaMA-Alpaca-2) | 13B | 44.3 | 45.9 | 42.6 | 44.0 |
+| [Chinese-LLaMA-2-13B](https://github.com/ymcui/Chinese-LLaMA-Alpaca-2) | 13B | 40.6 | 42.7 | 38.0 | 41.6 |
 
 #### CMMLU
 
 [CMMLU](https://github.com/haonan-li/CMMLU)是另一个综合性中文评测数据集，专门用于评估语言模型在中文语境下的知识和推理能力，涵盖了从基础学科到高级专业水平的67个主题，共计11.5K个选择题。CMMLU推理代码请参考本项目：[📖GitHub Wiki](https://github.com/ymcui/Chinese-LLaMA-Alpaca-3/wiki/cmmlu_zh)
 
-| Models             | 参数量 | 类型 | Test (0-shot) | Test (5-shot) |
-| ------------------------ | :------------: | :-----------: | :-----------: | :-----------: |
-| **Llama-3-Chinese-8B-Instruct** | 8B | 指令 | 49.7 | 51.5 |
-| **Llama-3-Chinese-8B** | 8B | 基座 | 48.0 | 50.9 |
-| [Llama-3-8B](https://huggingface.co/meta-llama/Meta-Llama-3-8B) | 8B | 基座 | 47.8 | 50.8 |
-| [Chinese-Mixtral-Instruct](https://github.com/ymcui/Chinese-Mixtral) | 8x7B | 指令 | 50.0 | 53.0 |
-| [Chinese-Mixtral](https://github.com/ymcui/Chinese-Mixtral) | 8x7B | 基座 | 42.5 | 51.0 |
-| [Chinese-Alpaca-2-13B](https://github.com/ymcui/Chinese-LLaMA-Alpaca-2) | 13B | 指令 |     43.2      |     45.5      |
-| [Chinese-LLaMA-2-13B](https://github.com/ymcui/Chinese-LLaMA-Alpaca-2) | 13B | 基座 |     38.9      |     42.5      |
+| Models             | 参数量 | Test (0-shot) | Test (5-shot) |
+| ------------------------ | :------------: | :-----------: | :-----------: |
+| **Llama-3-Chinese-8B-Instruct** | 8B | 49.7 | 51.5 |
+| **Llama-3-Chinese-8B** | 8B | 48.0 | 50.9 |
+| [Llama-3-8B](https://huggingface.co/meta-llama/Meta-Llama-3-8B) | 8B | 47.8 | 50.8 |
+| [Chinese-Mixtral-Instruct](https://github.com/ymcui/Chinese-Mixtral) | 8x7B | 50.0 | 53.0 |
+| [Chinese-Mixtral](https://github.com/ymcui/Chinese-Mixtral) | 8x7B | 42.5 | 51.0 |
+| [Chinese-Alpaca-2-13B](https://github.com/ymcui/Chinese-LLaMA-Alpaca-2) | 13B |     43.2      |     45.5      |
+| [Chinese-LLaMA-2-13B](https://github.com/ymcui/Chinese-LLaMA-Alpaca-2) | 13B |     38.9      |     42.5      |
 
 #### MMLU
 
 [MMLU](https://github.com/hendrycks/test)是一个用于评测自然语言理解能力的英文评测数据集，是当今用于评测大模型能力的主要数据集之一，其中验证集和测试集分别包含1.5K和14.1K个选择题，涵盖57个学科。MMLU推理代码请参考本项目：[📖GitHub Wiki](https://github.com/ymcui/Chinese-LLaMA-Alpaca-3/wiki/mmlu_zh)
 
-| Models             | 参数量 | 类型 | Valid (0-shot) | Valid (5-shot) | Test (0-shot) | Test (5-shot) |
-| ------------------------ | :------------: | :------------: | :-----------: | :-----------: | :-----------: | :-----------: |
-| **Llama-3-Chinese-8B-Instruct** | 8B | 指令 | 60.1 | 61.3 | 59.8 | 61.8 |
-| **Llama-3-Chinese-8B** | 8B | 基座 | 55.5 | 58.5 | 57.3 | 61.1 |
-| [Llama-3-8B](https://huggingface.co/meta-llama/Meta-Llama-3-8B) | 8B | 基座 | 58.6 | 62.5 | 60.5 | 65.0 |
-| [Chinese-Mixtral-Instruct](https://github.com/ymcui/Chinese-Mixtral) | 8x7B | 指令 | 65.1 | 69.6 | 67.5 | 69.8 |
-| [Chinese-Mixtral](https://github.com/ymcui/Chinese-Mixtral) | 8x7B | 基座 | 63.2 | 67.1 | 65.5 | 68.3 |
-| [Chinese-Alpaca-2-13B](https://github.com/ymcui/Chinese-LLaMA-Alpaca-2) | 13B | 指令 | 49.6 | 53.2 | 50.9 | 53.5 |
-| [Chinese-LLaMA-2-13B](https://github.com/ymcui/Chinese-LLaMA-Alpaca-2) | 13B | 基座 | 46.8 | 50.0 | 46.6 | 51.8 |
+| Models             | 参数量 | Valid (0-shot) | Valid (5-shot) | Test (0-shot) | Test (5-shot) |
+| ------------------------ | :------------: | :-----------: | :-----------: | :-----------: | :-----------: |
+| **Llama-3-Chinese-8B-Instruct** | 8B | 60.1 | 61.3 | 59.8 | 61.8 |
+| **Llama-3-Chinese-8B** | 8B | 55.5 | 58.5 | 57.3 | 61.1 |
+| [Llama-3-8B](https://huggingface.co/meta-llama/Meta-Llama-3-8B) | 8B | 58.6 | 62.5 | 60.5 | 65.0 |
+| [Chinese-Mixtral-Instruct](https://github.com/ymcui/Chinese-Mixtral) | 8x7B | 65.1 | 69.6 | 67.5 | 69.8 |
+| [Chinese-Mixtral](https://github.com/ymcui/Chinese-Mixtral) | 8x7B | 63.2 | 67.1 | 65.5 | 68.3 |
+| [Chinese-Alpaca-2-13B](https://github.com/ymcui/Chinese-LLaMA-Alpaca-2) | 13B | 49.6 | 53.2 | 50.9 | 53.5 |
+| [Chinese-LLaMA-2-13B](https://github.com/ymcui/Chinese-LLaMA-Alpaca-2) | 13B | 46.8 | 50.0 | 46.6 | 51.8 |
 
 #### LongBench
 
@@ -221,13 +223,13 @@
 
 本项目Llama-3-Chinese-Instruct沿用原版Llama-3-Instruct的指令模板。以下是一组对话示例：
 
-> **<|begin_of_text|><|start_header_id|>system<|end_header_id|>**
+> <|begin_of_text|><|start_header_id|>system<|end_header_id|>
 >
-> You are a helpful assistant. 你是一个乐于助人的助手。**<|eot_id|><|start_header_id|>user<|end_header_id|>**
+> You are a helpful assistant. 你是一个乐于助人的助手。<|eot_id|><|start_header_id|>user<|end_header_id|>
 >
-> 你好**<|eot_id|><|start_header_id|>assistant<|end_header_id|>**
+> 你好<|eot_id|><|start_header_id|>assistant<|end_header_id|>
 >
-> 你好！有什么可以帮助你的吗？**<|eot_id|>**
+> 你好！有什么可以帮助你的吗？<|eot_id|>
 
 ### 指令数据
 
