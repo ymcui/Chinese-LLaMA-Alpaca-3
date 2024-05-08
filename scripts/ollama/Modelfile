@@ -7,8 +7,8 @@ TEMPLATE """{{ if .System }}<|start_header_id|>system<|end_header_id|>
 
 {{ .Response }}<|eot_id|>"""
 SYSTEM """You are a helpful assistant. 你是一个乐于助人的助手。"""
+PARAMETER temperature 0.2
 PARAMETER num_keep 24
 PARAMETER stop <|start_header_id|>
 PARAMETER stop <|end_header_id|>
 PARAMETER stop <|eot_id|>
-PARAMETER stop assistant
