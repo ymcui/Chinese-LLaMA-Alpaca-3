@@ -206,6 +206,21 @@ To evaluate the effectiveness of the related models, this project conducted both
 | [Chinese-Alpaca-2-7B-64K](https://github.com/ymcui/Chinese-LLaMA-Alpaca-2) |   44.7   |   28.1   | 14.4 |  39.0  | 44.6 | 5.0  | 29.3 |
 | [Chinese-LLaMA-2-7B-64K](https://github.com/ymcui/Chinese-LLaMA-Alpaca-2) |   27.2   |   16.4   | 6.5  |  33.0  | 7.8  | 5.0  | 16.0 |
 
+### Open LLM Leaderboard
+
+[Open LLM Leaderboard](https://huggingface.co/spaces/HuggingFaceH4/open_llm_leaderboard) is an LLM benchmark (English) brought by HuggingFaceH4 team, including ARC, HellaSwag, MMLU, TruthfulQA, Winograde, GSM8K datasets. Below are the evaluation results of this project's models.
+
+| Models                                                       |  ARC  | HellaS | MMLU  |  TQA  | WinoG | GSM8K | Average |
+| ------------------------------------------------------------ | :---: | :----: | :---: | :---: | :---: | :---: | :-----: |
+| **Llama-3-Chinese-8B-Instruct-v2**                           | 62.63 | 79.72  | 66.48 | 53.93 | 76.72 | 60.58 |  66.68  |
+| **Llama-3-Chinese-8B-Instruct**                              | 61.26 | 80.24  | 63.10 | 55.15 | 75.06 | 44.43 |  63.21  |
+| **Llama-3-Chinese-8B**                                       | 55.88 | 79.53  | 63.70 | 41.14 | 77.03 | 37.98 |  59.21  |
+| [Meta-Llama-3-8B-Instruct](https://huggingface.co/meta-llama/Meta-Llama-3-8B-Instruct) | 60.75 | 78.55  | 67.07 | 51.65 | 74.51 | 68.69 |  66.87  |
+| [Meta-Llama-3-8B](https://huggingface.co/meta-llama/Meta-Llama-3-8B) | 59.47 | 82.09  | 66.69 | 43.90 | 77.35 | 45.79 |  62.55  |
+| [Chinese-Mixtral-Instruct](https://github.com/ymcui/Chinese-Mixtral) (8x7B) | 67.75 | 85.67  | 71.53 | 57.46 | 83.11 | 55.65 |  70.19  |
+| [Chinese-Mixtral](https://github.com/ymcui/Chinese-Mixtral) (8x7B) | 67.58 | 85.34  | 70.38 | 46.86 | 82.00 | 0.00  |  58.69  |
+
+*Note: MMLU resutls are different from the one that reported in our repo, as the evaluation scripts differ.*
 
 ### Quantitative Performance Evaluation
 
