@@ -29,7 +29,9 @@ This project is developed based on Meta's newly released next-generation open-so
 
 ## News
 
-**[2024/05/07] Add pre-training and SFT scripts. For details, see: [📚Version 1.1 Release Log](https://github.com/ymcui/Chinese-LLaMA-Alpaca-3/releases/tag/v1.1)**
+**[2024/05/08] Release Llama-3-Chinese-8B-Instruct-v2, which is directly tuned on  [Meta-Llama-3-8B-Instruct](https://huggingface.co/meta-llama/Meta-Llama-3-8B-Instruct) with 5M instructions. For details, see: [📚Version 2.0 Release Log](https://github.com/ymcui/Chinese-LLaMA-Alpaca-3/releases/tag/v2.0)**
+
+[2024/05/07] Add pre-training and SFT scripts. For details, see: [📚Version 1.1 Release Log](https://github.com/ymcui/Chinese-LLaMA-Alpaca-3/releases/tag/v1.1)
 
 [2024/04/30] Released the Llama-3-Chinese-8B base model and Llama-3-Chinese-8B-Instruct instruction model. For details, see: [📚Version 1.0 Release Log](https://github.com/ymcui/Chinese-LLaMA-Alpaca-3/releases/tag/v1.0)
 
@@ -78,13 +80,13 @@ This project has launched the Chinese open-source large models Llama-3-Chinese a
 
 Here's a comparison of the models in this project and recommended usage scenarios. **For chat interactions, please choose the Instruct version.**
 
-| Comparison Item         | Llama-3-Chinese                         | Llama-3-Chinese-Instruct                         |
+| Comparison Item         | Llama-3-Chinese-8B                      | Llama-3-Chinese-8B-Instruct             |
 | ----------------------- | :-------------------------------------: | :----------------------------------------------: |
 | Model Type              | Base Model                              | Instruction/Chat Model (similar to ChatGPT)      |
 | Model Size              | 8B                                      | 8B                                               |
 | Training Type           | Causal-LM (CLM)                         | Instruction Fine-Tuning                          |
 | Training Method         | LoRA + Full emb/lm-head                 | LoRA + Full emb/lm-head                          |
-| Initial Model           | [Original Meta-Llama-3-8B](https://huggingface.co/meta-llama/Meta-Llama-3-8B) | Llama-3-Chinese                    |
+| Initial Model           | [Meta-Llama-3-8B](https://huggingface.co/meta-llama/Meta-Llama-3-8B) | v1: Llama-3-Chinese-8B<br/>v2: [Meta-Llama-3-8B-Instruct](https://huggingface.co/meta-llama/Meta-Llama-3-8B-Instruct) |
 | Training Corpus         | Unlabeled general corpus (approx. 120GB) | Labeled instruction data (approx. 5 million entries) |
 | Vocabulary Size         | Original vocabulary (128,256)           | Original vocabulary (128,256)                    |
 | Supported Context Length | 8K                                      | 8K                                               |
@@ -94,15 +96,19 @@ Here's a comparison of the models in this project and recommended usage scenario
 
 ### Download Links
 
-| Model Name                            | Full Version | LoRA Version | GGUF Version |
-| ------------------------------------- | :----------: | :----------: | :----------: |
-| **Llama-3-Chinese-8B**<br/>(base model) | [[🤗Hugging Face]](https://huggingface.co/hfl/llama-3-chinese-8b)<br/> [[🤖ModelScope]](https://modelscope.cn/models/ChineseAlpacaGroup/llama-3-chinese-8b)<br/>[[wisemodel]](https://wisemodel.cn/models/ChineseAlpacaGroup/llama-3-chinese-8b) | [[🤗Hugging Face]](https://huggingface.co/hfl/llama-3-chinese-8b-lora)<br/> [[🤖ModelScope]](https://modelscope.cn/models/ChineseAlpacaGroup/llama-3-chinese-8b-lora)<br/>[[wisemodel]](https://wisemodel.cn/models/ChineseAlpacaGroup/llama-3-chinese-8b-lora) | [[🤗Hugging Face]](https://huggingface.co/hfl/llama-3-chinese-8b-gguf)<br/> [[🤖ModelScope]](https://modelscope.cn/models/ChineseAlpacaGroup/llama-3-chinese-8b-gguf) |
-| **Llama-3-Chinese-8B-Instruct**<br/>(chat model) | [[🤗Hugging Face]](https://huggingface.co/hfl/llama-3-chinese-8b-instruct)<br/> [[🤖ModelScope]](https://modelscope.cn/models/ChineseAlpacaGroup/llama-3-chinese-8b-instruct)<br/>[[wisemodel]](https://wisemodel.cn/models/ChineseAlpacaGroup/llama-3-chinese-8b-instruct) | [[🤗Hugging Face]](https://huggingface.co/hfl/llama-3-chinese-8b-instruct-lora)<br/> [[🤖ModelScope]](https://modelscope.cn/models/ChineseAlpacaGroup/llama-3-chinese-8b-instruct-lora)<br/>[[wisemodel]](https://wisemodel.cn/models/ChineseAlpacaGroup/llama-3-chinese-8b-instruct-lora) | [[🤗Hugging Face]](https://huggingface.co/hfl/llama-3-chinese-8b-instruct-gguf)<br/> [[🤖ModelScope]](https://modelscope.cn/models/ChineseAlpacaGroup/llama-3-chinese-8b-instruct-gguf) |
+| Model Name                                          |                         Full Version                         |                         LoRA Version                         |                         GGUF Version                         |
+| --------------------------------------------------- | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: |
+| **Llama-3-Chinese-8B-Instruct-v2**<br/>(chat model) | [[🤗Hugging Face]](https://huggingface.co/hfl/llama-3-chinese-8b-instruct-v2)<br/> [[🤖ModelScope]](https://modelscope.cn/models/ChineseAlpacaGroup/llama-3-chinese-8b-instruct-v2)<br/>[[wisemodel]](https://wisemodel.cn/models/ChineseAlpacaGroup/llama-3-chinese-8b-instruct-v2) | [[🤗Hugging Face]](https://huggingface.co/hfl/llama-3-chinese-8b-instruct-v2-lora)<br/> [[🤖ModelScope]](https://modelscope.cn/models/ChineseAlpacaGroup/llama-3-chinese-8b-instruct-v2-lora)<br/>[[wisemodel]](https://wisemodel.cn/models/ChineseAlpacaGroup/llama-3-chinese-8b-instruct-v2-lora) | [[🤗Hugging Face]](https://huggingface.co/hfl/llama-3-chinese-8b-instruct-v2-gguf)<br/> [[🤖ModelScope]](https://modelscope.cn/models/ChineseAlpacaGroup/llama-3-chinese-8b-instruct-v2-gguf) |
+| **Llama-3-Chinese-8B-Instruct**<br/>(chat model)    | [[🤗Hugging Face]](https://huggingface.co/hfl/llama-3-chinese-8b-instruct)<br/> [[🤖ModelScope]](https://modelscope.cn/models/ChineseAlpacaGroup/llama-3-chinese-8b-instruct)<br/>[[wisemodel]](https://wisemodel.cn/models/ChineseAlpacaGroup/llama-3-chinese-8b-instruct) | [[🤗Hugging Face]](https://huggingface.co/hfl/llama-3-chinese-8b-instruct-lora)<br/> [[🤖ModelScope]](https://modelscope.cn/models/ChineseAlpacaGroup/llama-3-chinese-8b-instruct-lora)<br/>[[wisemodel]](https://wisemodel.cn/models/ChineseAlpacaGroup/llama-3-chinese-8b-instruct-lora) | [[🤗Hugging Face]](https://huggingface.co/hfl/llama-3-chinese-8b-instruct-gguf)<br/> [[🤖ModelScope]](https://modelscope.cn/models/ChineseAlpacaGroup/llama-3-chinese-8b-instruct-gguf) |
+| **Llama-3-Chinese-8B**<br/>(base model)             | [[🤗Hugging Face]](https://huggingface.co/hfl/llama-3-chinese-8b)<br/> [[🤖ModelScope]](https://modelscope.cn/models/ChineseAlpacaGroup/llama-3-chinese-8b)<br/>[[wisemodel]](https://wisemodel.cn/models/ChineseAlpacaGroup/llama-3-chinese-8b) | [[🤗Hugging Face]](https://huggingface.co/hfl/llama-3-chinese-8b-lora)<br/> [[🤖ModelScope]](https://modelscope.cn/models/ChineseAlpacaGroup/llama-3-chinese-8b-lora)<br/>[[wisemodel]](https://wisemodel.cn/models/ChineseAlpacaGroup/llama-3-chinese-8b-lora) | [[🤗Hugging Face]](https://huggingface.co/hfl/llama-3-chinese-8b-gguf)<br/> [[🤖ModelScope]](https://modelscope.cn/models/ChineseAlpacaGroup/llama-3-chinese-8b-gguf) |
+
 
 Model Type Description:
 
 - **Full Model**: Can be used directly for training and inference, no other merging steps required.
-- **LoRA Model**: Needs to be merged with the original [Meta-Llama-3-8B](https://huggingface.co/meta-llama/Meta-Llama-3-8B) to convert into a full version, merging steps: [**💻 Model Merging Steps**](https://github.com/ymcui/Chinese-LLaMA-Alpaca-3/wiki/model_conversion_en)
+- **LoRA Model**: Needs to be merged with the original base model to convert into a full version, merging steps: [**💻 Model Merging Steps**](https://github.com/ymcui/Chinese-LLaMA-Alpaca-3/wiki/model_conversion_en)
+  - v1 base model:  [Meta-Llama-3-8B](https://huggingface.co/meta-llama/Meta-Llama-3-8B) 
+  - v2 base model:  [Meta-Llama-3-8B-Instruct](https://huggingface.co/meta-llama/Meta-Llama-3-8B-Instruct) 
 - **GGUF Model**: Quantization format released by [llama.cpp](https://github.com/ggerganov/llama.cpp), compatible with common large model inference tools like ollama, recommended for users who only need to perform inference deployment. The model name with `-im` suffix is generated with important matrix, which has generally better performance.
 > [!NOTE]
 > If HF access is blocked, consider using mirror sites (like [hf-mirror.com](hf-mirror.com)), please find the specific methods and solutions on your own.
@@ -138,59 +144,67 @@ To evaluate the effectiveness of the related models, this project conducted both
 
 [C-Eval](https://cevalbenchmark.com) is a comprehensive Chinese fundamental model evaluation suite, with its validation and test sets comprising 1.3K and 12.3K multiple-choice questions respectively, covering 52 subjects. For C-Eval inference code, please refer to this project: [📖GitHub Wiki](https://github.com/ymcui/Chinese-LLaMA-Alpaca-3/wiki/ceval_en)
 
-| Models | Size | Valid (0-shot) | Valid (5-shot) | Test (0-shot) | Test (5-shot) |
-| --- | :---: | :---: | :---: | :---: | :---: |
-| **Llama-3-Chinese-8B-Instruct** | 8B | 49.3 | 51.5 | 48.3 | 49.4 |
-| **Llama-3-Chinese-8B** | 8B | 47.0 | 50.5 | 46.1 | 49.0 |
-| [Llama-3-8B](https://huggingface.co/meta-llama/Meta-Llama-3-8B) | 8B | 49.3 | 51.2 | 46.1 | 49.4 |
-| [Chinese-Mixtral-Instruct](https://github.com/ymcui/Chinese-Mixtral) | 8x7B | 51.7 | 55.0 | 50.0 | 51.5 |
-| [Chinese-Mixtral](https://github.com/ymcui/Chinese-Mixtral) | 8x7B | 45.8 | 54.2 | 43.1 | 49.1 |
-| [Chinese-Alpaca-2-13B](https://github.com/ymcui/Chinese-LLaMA-Alpaca-2) | 13B | 44.3 | 45.9 | 42.6 | 44.0 |
-| [Chinese-LLaMA-2-13B](https://github.com/ymcui/Chinese-LLaMA-Alpaca-2) | 13B | 40.6 | 42.7 | 38.0 | 41.6 |
+| Models             | Valid (0-shot) | Valid (5-shot) | Test (0-shot) | Test (5-shot) |
+| ------------------------ | :-----------: | :-----------: | :-----------: | :-----------: |
+| **Llama-3-Chinese-8B-Instruct-v2** | 51.6 | 51.6 | 49.7 | 49.8 |
+| **Llama-3-Chinese-8B-Instruct** | 49.3 | 51.5 | 48.3 | 49.4 |
+| **Llama-3-Chinese-8B** | 47.0 | 50.5 | 46.1 | 49.0 |
+| [Meta-Llama-3-8B-Instruct](https://huggingface.co/meta-llama/Meta-Llama-3-8B-Instruct) | 51.3 | 51.3 | 49.5 | 51.0 |
+| [Meta-Llama-3-8B](https://huggingface.co/meta-llama/Meta-Llama-3-8B) | 49.3 | 51.2 | 46.1 | 49.4 |
+| [Chinese-Mixtral-Instruct](https://github.com/ymcui/Chinese-Mixtral) (8x7B) | 51.7 | 55.0 | 50.0 | 51.5 |
+| [Chinese-Mixtral](https://github.com/ymcui/Chinese-Mixtral) (8x7B) | 45.8 | 54.2 | 43.1 | 49.1 |
+| [Chinese-Alpaca-2-13B](https://github.com/ymcui/Chinese-LLaMA-Alpaca-2) | 44.3 | 45.9 | 42.6 | 44.0 |
+| [Chinese-LLaMA-2-13B](https://github.com/ymcui/Chinese-LLaMA-Alpaca-2) | 40.6 | 42.7 | 38.0 | 41.6 |
 
 #### CMMLU
 
 [CMMLU](https://github.com/haonan-li/CMMLU) is another comprehensive Chinese evaluation dataset specifically designed to assess language models' knowledge and reasoning capabilities in a Chinese context, covering topics from basic subjects to advanced professional levels, with a total of 11.5K multiple-choice questions. For CMMLU inference code, please refer to this project: [📖GitHub Wiki](https://github.com/ymcui/Chinese-LLaMA-Alpaca-3/wiki/cmmlu_en)
 
-| Models | Size | Test (0-shot) | Test (5-shot) |
-| --- | :---: | :---: | :---: |
-| **Llama-3-Chinese-8B-Instruct** | 8B | 49.7 | 51.5 |
-| **Llama-3-Chinese-8B** | 8B | 48.0 | 50.9 |
-| [Llama-3-8B](https://huggingface.co/meta-llama/Meta-Llama-3-8B) | 8B | 47.8 | 50.8 |
-| [Chinese-Mixtral-Instruct](https://github.com/ymcui/Chinese-Mixtral) | 8x7B | 50.0 | 53.0 |
-| [Chinese-Mixtral](https://github.com/ymcui/Chinese-Mixtral) | 8x7B | 42.5 | 51.0 |
-| [Chinese-Alpaca-2-13B](https://github.com/ymcui/Chinese-LLaMA-Alpaca-2) | 13B | 43.2 | 45.5 |
-| [Chinese-LLaMA-2-13B](https://github.com/ymcui/Chinese-LLaMA-Alpaca-2) | 13B | 38.9 | 42.5 |
+| Models             | Test (0-shot) | Test (5-shot) |
+| ------------------------ | :-----------: | :-----------: |
+| **Llama-3-Chinese-8B-Instruct-v2** | 51.8 | 52.4 |
+| **Llama-3-Chinese-8B-Instruct** | 49.7 | 51.5 |
+| **Llama-3-Chinese-8B** | 48.0 | 50.9 |
+| [Meta-Llama-3-8B-Instruct](https://huggingface.co/meta-llama/Meta-Llama-3-8B-Instruct) | 53.0 | 53.5 |
+| [Meta-Llama-3-8B](https://huggingface.co/meta-llama/Meta-Llama-3-8B) | 47.8 | 50.8 |
+| [Chinese-Mixtral-Instruct](https://github.com/ymcui/Chinese-Mixtral) (8x7B) | 50.0 | 53.0 |
+| [Chinese-Mixtral](https://github.com/ymcui/Chinese-Mixtral) (8x7B) | 42.5 | 51.0 |
+| [Chinese-Alpaca-2-13B](https://github.com/ymcui/Chinese-LLaMA-Alpaca-2) |     43.2      |     45.5      |
+| [Chinese-LLaMA-2-13B](https://github.com/ymcui/Chinese-LLaMA-Alpaca-2) |     38.9      |     42.5      |
 
 #### MMLU
 
 [MMLU](https://github.com/hendrycks/test) is an English evaluation dataset for assessing natural language understanding capabilities, one of the main datasets used today for evaluating large models' capabilities, with its validation and test sets comprising 1.5K and 14.1K multiple-choice questions respectively, covering 57 subjects. For MMLU inference code, please refer to this project: [📖GitHub Wiki](https://github.com/ymcui/Chinese-LLaMA-Alpaca-3/wiki/mmlu_en)
 
-| Models | Size | Valid (0-shot) | Valid (5-shot) | Test (0-shot) | Test (5-shot) |
-| --- | :---: | :---: | :---: | :---: | :---: |
-| **Llama-3-Chinese-8B-Instruct** | 8B | 60.1 | 61.3 | 59.8 | 61.8 |
-| **Llama-3-Chinese-8B** | 8B | 55.5 | 58.5 | 57.3 | 61.1 |
-| [Llama-3-8B](https://huggingface.co/meta-llama/Meta-Llama-3-8B) | 8B | 58.6 | 62.5 | 60.5 | 65.0 |
-| [Chinese-Mixtral-Instruct](https://github.com/ymcui/Chinese-Mixtral) | 8x7B | 65.1 | 69.6 | 67.5 | 69.8 |
-| [Chinese-Mixtral](https://github.com/ymcui/Chinese-Mixtral) | 8x7B | 63.2 | 67.1 | 65.5 | 68.3 |
-| [Chinese-Alpaca-2-13B](https://github.com/ymcui/Chinese-LLaMA-Alpaca-2) | 13B | 49.6 | 53.2 | 50.9 | 53.5 |
-| [Chinese-LLaMA-2-13B](https://github.com/ymcui/Chinese-LLaMA-Alpaca-2) | 13B | 46.8 | 50.0 | 46.6 | 51.8 |
+| Models             | Valid (0-shot) | Valid (5-shot) | Test (0-shot) | Test (5-shot) |
+| ------------------------ | :-----------: | :-----------: | :-----------: | :-----------: |
+| **Llama-3-Chinese-8B-Instruct-v2** | 62.1 | 63.9 | 62.6 | 63.7 |
+| **Llama-3-Chinese-8B-Instruct** | 60.1 | 61.3 | 59.8 | 61.8 |
+| **Llama-3-Chinese-8B** | 55.5 | 58.5 | 57.3 | 61.1 |
+| [Meta-Llama-3-8B-Instruct](https://huggingface.co/meta-llama/Meta-Llama-3-8B-Instruct) | 63.4 | 64.8 | 65.1 | 66.4 |
+| [Meta-Llama-3-8B](https://huggingface.co/meta-llama/Meta-Llama-3-8B) | 58.6 | 62.5 | 60.5 | 65.0 |
+| [Chinese-Mixtral-Instruct](https://github.com/ymcui/Chinese-Mixtral) (8x7B) | 65.1 | 69.6 | 67.5 | 69.8 |
+| [Chinese-Mixtral](https://github.com/ymcui/Chinese-Mixtral) (8x7B) | 63.2 | 67.1 | 65.5 | 68.3 |
+| [Chinese-Alpaca-2-13B](https://github.com/ymcui/Chinese-LLaMA-Alpaca-2) | 49.6 | 53.2 | 50.9 | 53.5 |
+| [Chinese-LLaMA-2-13B](https://github.com/ymcui/Chinese-LLaMA-Alpaca-2) | 46.8 | 50.0 | 46.6 | 51.8 |
 
 #### LongBench
 
 [LongBench](https://github.com/THUDM/LongBench) is a benchmark for evaluating large models' long-text understanding capabilities, composed of 6 categories and 20 different tasks. Most tasks have an average length between 5K-15K, totaling approximately 4.75K test data entries. Below are the evaluation results of this project's models on these Chinese tasks (including code tasks). For LongBench inference code, please refer to this project: [📖GitHub Wiki](https://github.com/ymcui/Chinese-LLaMA-Alpaca-3/wiki/longbench_en)
 
-| Models | Size | Single-doc QA | Multi-doc QA | Summary | Few-Shot Learning | Code | Synthesis | Average |
-| --- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| **Llama-3-Chinese-8B-Instruct**                              |   8B   |   44.1   |   24.0   | 12.4 |  33.5  | 51.8 | 11.5 | 29.6 |
-| **Llama-3-Chinese-8B** | 8B | 16.4 | 19.3 | 4.3 | 28.7 | 14.3 | 4.6 | 14.6 |
-| [Llama-3-8B](https://huggingface.co/meta-llama/Meta-Llama-3-8B) | 8B | 21.2 | 22.9 | 2.7 | 35.8 | 65.9 | 40.8 | 31.6 |
-| [Chinese-Mixtral-Instruct](https://github.com/ymcui/Chinese-Mixtral) | 8x7B | 50.3 | 34.2 | 16.4 | 42.0 | 56.1 | 89.5 | 48.1 |
-| [Chinese-Mixtral](https://github.com/ymcui/Chinese-Mixtral) | 8x7B | 32.0 | 23.7 | 0.4 | 42.5 | 27.4 | 14.0 | 23.3 |
-| [Chinese-Alpaca-2-13B-16K](https://github.com/ymcui/Chinese-LLaMA-Alpaca-2) | 13B | 47.9 | 26.7 | 13.0 | 22.3 | 46.6 | 21.5 | 29.7 |
-| [Chinese-LLaMA-2-13B-16K](https://github.com/ymcui/Chinese-LLaMA-Alpaca-2) | 13B | 36.7 | 17.7 | 3.1 | 29.8 | 13.8 | 3.0 | 17.3 |
-| [Chinese-Alpaca-2-7B-64K](https://github.com/ymcui/Chinese-LLaMA-Alpaca-2) | 7B | 44.7 | 28.1 | 14.4 | 39.0 | 44.6 | 5.0 | 29.3 |
-| [Chinese-LLaMA-2-7B-64K](https://github.com/ymcui/Chinese-LLaMA-Alpaca-2) | 7B | 27.2 | 16.4 | 6.5 | 33.0 | 7.8 | 5.0 | 16.0 |
+| Models | Single-doc QA | Multi-doc QA | Summarization | Few-Shot Learning | Code | Synthesis | Average |
+| --- | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| **Llama-3-Chinese-8B-Instruct-v2**                           |   57.3   |   27.1   | 13.9 |  30.3  | 60.6 | 89.5 | 46.4 |
+| **Llama-3-Chinese-8B-Instruct**                              |   44.1   |   24.0   | 12.4 |  33.5  | 51.8 | 11.5 | 29.6 |
+| **Llama-3-Chinese-8B**                                       |   16.4   |   19.3   | 4.3  |  28.7  | 14.3 | 4.6  | 14.6 |
+| [Meta-Llama-3-8B-Instruct](https://huggingface.co/meta-llama/Meta-Llama-3-8B-Instruct) |   55.1   |   15.1   | 0.1  |  24.0  | 51.3 | 94.5 | 40.0 |
+| [Meta-Llama-3-8B](https://huggingface.co/meta-llama/Meta-Llama-3-8B) |   21.2   |   22.9   | 2.7  |  35.8  | 65.9 | 40.8 | 31.6 |
+| [Chinese-Mixtral-Instruct](https://github.com/ymcui/Chinese-Mixtral) (8x7B) |   50.3   |   34.2   | 16.4 |  42.0  | 56.1 | 89.5 | 48.1 |
+| [Chinese-Mixtral](https://github.com/ymcui/Chinese-Mixtral) (8x7B) |   32.0   |   23.7   | 0.4  |  42.5  | 27.4 | 14.0 | 23.3 |
+| [Chinese-Alpaca-2-13B-16K](https://github.com/ymcui/Chinese-LLaMA-Alpaca-2) |   47.9   |   26.7   | 13.0 |  22.3  | 46.6 | 21.5 | 29.7 |
+| [Chinese-LLaMA-2-13B-16K](https://github.com/ymcui/Chinese-LLaMA-Alpaca-2) |   36.7   |   17.7   | 3.1  |  29.8  | 13.8 | 3.0  | 17.3 |
+| [Chinese-Alpaca-2-7B-64K](https://github.com/ymcui/Chinese-LLaMA-Alpaca-2) |   44.7   |   28.1   | 14.4 |  39.0  | 44.6 | 5.0  | 29.3 |
+| [Chinese-LLaMA-2-7B-64K](https://github.com/ymcui/Chinese-LLaMA-Alpaca-2) |   27.2   |   16.4   | 6.5  |  33.0  | 7.8  | 5.0  | 16.0 |
 
 
 ### Quantitative Performance Evaluation
@@ -253,7 +267,7 @@ Question 4: Can the models from this repository be used commercially?
 Question 5: Why not perform full pre-training instead of using LoRA?
 Question 6: Why is the conversational performance of Llama-3-Chinese not good?
 Question 7: Why does the instruction model reply saying it is ChatGPT?
-Question 8: Why not train from Meta-Llama-3-Instruct?
+Question 8: What are the differences between v1 and v2 of the Instruct model?
 ```
 
 ## Disclaimer
