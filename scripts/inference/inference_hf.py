@@ -191,7 +191,7 @@ if __name__ == '__main__':
                     generation_output = model.generate(
                         input_ids = inputs["input_ids"].to(device),
                         attention_mask = inputs['attention_mask'].to(device),
-                        eos_token_id=tokenizer.eos_token_id,
+                        eos_token_id=terminators,
                         pad_token_id=tokenizer.eos_token_id,
                         generation_config = generation_config
                     )
