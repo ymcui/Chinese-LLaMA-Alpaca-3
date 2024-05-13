@@ -111,7 +111,7 @@ Model Type Description:
   - v2 base model:  [Meta-Llama-3-8B-Instruct](https://huggingface.co/meta-llama/Meta-Llama-3-8B-Instruct) 
 - **GGUF Model**: Quantization format released by [llama.cpp](https://github.com/ggerganov/llama.cpp), compatible with common large model inference tools like ollama, recommended for users who only need to perform inference deployment. The model name with `-im` suffix is generated with important matrix, which has generally better performance.
 > [!NOTE]
-> If HF access is blocked, consider using mirror sites (like [hf-mirror.com](hf-mirror.com)), please find the specific methods and solutions on your own.
+> If HF access is blocked, consider using mirror sites (like [hf-mirror.com](https://hf-mirror.com)), please find the specific methods and solutions on your own.
 
 ## Inference and Deployment
 
