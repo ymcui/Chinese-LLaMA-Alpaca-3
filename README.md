@@ -18,7 +18,7 @@
 
 - 🚀 开源Llama-3-Chinese基座模型和Llama-3-Chinese-Instruct指令模型
 - 🚀 开源了预训练脚本、指令精调脚本，用户可根据需要进一步训练或微调模型
-- 🚀 开源了alpaca_zh_51k, stem_zh_instruction, ruozhiba_gpt4_turbo指令精调数据
+- 🚀 开源了alpaca_zh_51k, stem_zh_instruction, ruozhiba_gpt4 (4o/4T) 指令精调数据
 - 🚀 提供了利用个人电脑CPU/GPU快速在本地进行大模型量化和部署的教程
 - 🚀 支持[🤗transformers](https://github.com/huggingface/transformers), [llama.cpp](https://github.com/ggerganov/llama.cpp), [text-generation-webui](https://github.com/oobabooga/text-generation-webui), [vLLM](https://github.com/vllm-project/vllm), [Ollama](https://ollama.com)等Llama-3生态
 
@@ -267,7 +267,7 @@
 | ------------------------------------------------------------ | :----------------------------------------------------------- | :--: |
 | [alpaca_zh_51k](https://huggingface.co/datasets/hfl/alpaca_zh_51k) | 使用gpt-3.5翻译的Alpaca数据                                  | 51K  |
 | [stem_zh_instruction](https://huggingface.co/datasets/hfl/stem_zh_instruction) | 使用gpt-3.5爬取的STEM数据，包含物理、化学、医学、生物学、地球科学 | 256K |
-| [ruozhiba_gpt4_turbo](https://huggingface.co/datasets/hfl/ruozhiba_gpt4_turbo) | 使用`gpt-4-turbo-2024-04-09`获取的ruozhiba问答数据           | 2449 |
+| [ruozhiba_gpt4](https://huggingface.co/datasets/hfl/ruozhiba_gpt4) | 使用GPT-4o和GPT-4T获取的ruozhiba问答数据                     | 2449 |
 
 ## 常见问题
 
