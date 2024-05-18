@@ -5852,12 +5852,12 @@
   {
     "instruction": "Hello,Peter whats your name?",
     "input": "",
-    "output": "The sentence 'Hello, Peter what's your name?' appears to be a greeting followed by a question that is somewhat illogical if directed to someone named Peter, as it questions the name that has just been used in the greeting. If you already addressed him as Peter, you would not typically follow up by asking for his name. Thus, this might be either a typographical error or a playful or rhetorical query. In response, one might simply affirm, 'My name is indeed Peter' assuming you are Peter, or clarify 'You just called me Peter, and that is correct!' if aiming to address the humor in the question."
+    "output": "这句话'Hello, Peter what's your name?' 看起来是一个问候语，接着是一个有点不合逻辑的问题。如果你已经称呼他为彼得，那么你通常不会接着问他的名字。因此，这可能是一个打字错误或一种玩笑或修辞性的问题。对此的回应可以简单地确认：'我的名字确实是彼得'（假设你是彼得），或者澄清'你刚刚叫我彼得，这没错！' 如果你想回应问题中的幽默感。"
   },
   {
     "instruction": "我的大腿最近脱发很严重，一抓下来一大把，用什么生发产品好呢？",
     "input": "",
-    "output": "The description of '脱发' (hair loss) occurring on one's thigh is unusual as typically humans do not have dense hair in that area deserving typical hair loss treatment seen on the scalp. This might be a misunderstanding or idiomatic expression. However, assuming the issue is substantial loss of body hair or needing treatment for areas not typically experiencing such conditions, it's important to consult with a healthcare professional or a dermatologist. Over the counter, hair growth products like minoxidil are proposed generally for scalp treatment and not other body parts. It's crucial to determine the underlying cause of the hair loss before appropriate treatments can be recommended."
+    "output": "描述中提到的大腿脱发现象是不寻常的，因为通常人类在大腿部位没有像头皮那样浓密的毛发，因此通常不会出现类似头皮脱发的情况。这可能是对情况的误解或者是一种比喻表达。如果确实是大腿的体毛大量脱落，建议首先咨询医疗专业人士或皮肤科医生，因为这可能是某些潜在健康问题的征兆。在进行诊断之前，不建议使用任何头发生长产品，如米诺地尔等，因为这些产品通常是针对头皮脱发的治疗，而不适用于其他部位的体毛脱落。找到脱发的根本原因后，再根据医生的建议选择合适的治疗方法是最为安全和有效的。"
   },
   {
     "instruction": "一阵翻云覆雨过后我悄悄地为死去的妻子盖上被子之后拨打了110 后来**告诉我我破坏了案发现场…喂，我和妻子过夫妻生活有什么不对？",
@@ -6687,7 +6687,7 @@
   {
     "instruction": "现在已经秋天了，那么问题来了，为什么我昨天还做了春梦？",
     "input": "",
-    "output": "做梦是大脑活动的一种表现，通常跟人的 subconscious thoughts and feelings, recent experiences, or even desires are connected. 所谓的“春梦”, which could mean dreams with romantic or erotic content, are not necessarily bound by current external environmental factors such as seasons. Dreaming about subjects associated with spring during autumn can simply be a reflection of your deeper thoughts or wishes, and doesn't necessarily have any direct connection with the actual season. Essentially, dreams can be influenced by a myriad of factors, including personal desires, experiences, and emotions, irrespective of the time of year."
+    "output": "做梦是大脑活动的一种表现，通常与人的潜意识想法和感受、近期的经历，甚至是欲望有关。所谓的“春梦”，指的是带有浪漫或色情内容的梦境，这类梦境并不一定受到当前外部环境因素如季节的限制。在秋天做与春天相关的梦，可能只是你内心深处想法或愿望的反映，并不一定与实际季节有直接联系。总的来说，梦境可以受到各种因素的影响，包括个人的欲望、经历和情感，而这些因素与时间季节无关。"
   },
   {
     "instruction": "田忌赛马是田忌跑的快还是马跑的快？",

@@ -18,7 +18,7 @@ This project is developed based on Meta's newly released next-generation open-so
 
 - 🚀 Open-source Llama-3-Chinese base model and Llama-3-Chinese-Instruct instruction model
 - 🚀 Released pre-training scripts and instruction fine-tuning scripts, allowing users to further train or fine-tune the model as needed
-- 🚀 Released alpaca_zh_51k, stem_zh_instruction, ruozhiba_gpt4_turbo instruction data
+- 🚀 Released alpaca_zh_51k, stem_zh_instruction, ruozhiba_gpt4 (4o/4T) instruction data
 - 🚀 Provides a tutorial for quickly quantizing and deploying large models locally using a personal computer's CPU/GPU
 - 🚀 Supports [🤗transformers](https://github.com/huggingface/transformers), [llama.cpp](https://github.com/ggerganov/llama.cpp), [text-generation-webui](https://github.com/oobabooga/text-generation-webui), [vLLM](https://github.com/vllm-project/vllm), [Ollama](https://ollama.com) and other Llama-3 ecosystems
 
@@ -268,7 +268,7 @@ Below are some of the command data made open source for this project. For more d
 | ------------------------------------------------------------ | :----------------------------------------------------------- | :------: |
 | [alpaca_zh_51k](https://huggingface.co/datasets/hfl/alpaca_zh_51k) | Alpaca data translated using gpt-3.5                         |   51K    |
 | [stem_zh_instruction](https://huggingface.co/datasets/hfl/stem_zh_instruction) | STEM data scraped using gpt-3.5, including physics, chemistry, medicine, biology, earth sciences |   256K   |
-| [ruozhiba_gpt4_turbo](https://huggingface.co/datasets/hfl/ruozhiba_gpt4_turbo) | ruozhiba Q&A data obtained using `gpt-4-turbo-2024-04-09`    |   2449   |
+| [ruozhiba_gpt4](https://huggingface.co/datasets/hfl/ruozhiba_gpt4) | ruozhiba Q&A data obtained using GPT-4o and GPT-4T           |   2449   |
 
 ## Frequently Asked Questions
 
