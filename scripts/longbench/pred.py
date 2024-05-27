@@ -114,10 +114,16 @@ def seed_everything(seed):
 if __name__ == '__main__':
     seed_everything(42)
     load_type = torch.float16
-    if torch.cuda.is_available():
-        device = torch.device(0)
+
+    # Move the model to the MPS device if available
+    if torch.backends.mps.is_available():
+        device = torch.device("mps")
     else:
-        device = torch.device('cpu')
+        if torch.cuda.is_available():
+            device = torch.device(0)
+        else:
+            device = torch.device('cpu')
+    print(f"Using device: {device}")
 
     if args.e:
         en_datasets = [ "hotpotqa","2wikimqa",
