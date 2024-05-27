@@ -178,10 +178,6 @@ if __name__ == "__main__":
         action="store_true"
     )
     parser.add_argument(
-        "--load_in_4bit",
-        action="store_true"
-    )
-    parser.add_argument(
         "--use_flash_attention_2",
         action="store_true"
     )
