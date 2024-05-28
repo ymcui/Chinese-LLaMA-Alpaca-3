@@ -98,8 +98,13 @@ if __name__ == "__main__":
     args.n_times=max(args.n_times,1)
     print(args)
 
-    device = torch.device(0)
-    print(device)
+    # Move the model to the MPS device if available
+    if torch.backends.mps.is_available():
+        device = torch.device("mps")
+    else:
+        device = torch.device(0)
+    print(f"Using device: {device}")
+    
     evaluator=Llama_Evaluator(
         choices=choices,
         k=args.ntrain,

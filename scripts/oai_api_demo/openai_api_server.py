@@ -55,10 +55,17 @@ from openai_api_protocol import (
 )
 
 load_type = torch.float16
-if torch.cuda.is_available():
-    device = torch.device(0)
+
+# Move the model to the MPS device if available
+if torch.backends.mps.is_available():
+    device = torch.device("mps")
 else:
-    device = torch.device("cpu")
+    if torch.cuda.is_available():
+        device = torch.device(0)
+    else:
+        device = torch.device('cpu')
+print(f"Using device: {device}")
+
 if args.tokenizer_path is None:
     args.tokenizer_path = args.lora_model
     if args.lora_model is None:

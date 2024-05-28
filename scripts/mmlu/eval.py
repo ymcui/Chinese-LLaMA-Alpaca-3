@@ -40,7 +40,7 @@ def gen_prompt(train_df, subject, k=-1):
 
 
 @torch.no_grad()
-def mmlu_eval(args, subject, model, tokenizer, dev_df, test_df):
+def mmlu_eval(args, subject, model, tokenizer, dev_df, test_df, device):
     cors = []
     all_probs = []
 
@@ -50,7 +50,7 @@ def mmlu_eval(args, subject, model, tokenizer, dev_df, test_df):
         prompt_end = format_example(test_df, i, include_answer=False)
         train_prompt = gen_prompt(dev_df, subject, k)
         prompt = train_prompt + prompt_end
-        input_ids = tokenizer(prompt, return_tensors="pt").input_ids.cuda()
+        input_ids = tokenizer(prompt, return_tensors="pt").input_ids.to(device)
 
         label = test_df.iloc[i, test_df.shape[1] - 1]
 
@@ -67,7 +67,7 @@ def mmlu_eval(args, subject, model, tokenizer, dev_df, test_df):
                         logits[tokenizer("C").input_ids[-1]],
                         logits[tokenizer("D").input_ids[-1]],
                     ]
-                ),
+                ).to(device),
                 dim=0,
             )
             .detach()
@@ -91,6 +91,16 @@ def mmlu_eval(args, subject, model, tokenizer, dev_df, test_df):
 
 
 def main(args):
+    # Move the model to the MPS device if available
+    if torch.backends.mps.is_available():
+        device = torch.device("mps")
+    else:
+        if torch.cuda.is_available():
+            device = torch.device(0)
+        else:
+            device = torch.device('cpu')
+    print(f"Using device: {device}")
+
     tokenizer = AutoTokenizer.from_pretrained(args.model_path)
     model = AutoModelForCausalLM.from_pretrained(
         args.model_path,
@@ -98,7 +108,7 @@ def main(args):
         low_cpu_mem_usage=True,
         device_map='auto',
         attn_implementation="flash_attention_2" if args.use_flash_attention_2 else "sdpa"
-        ).eval()
+        ).to(device).eval()
     subjects = sorted(
         [
             f.split("_test.csv")[0]
@@ -131,7 +141,7 @@ def main(args):
                 os.path.join(args.data_dir, "val", subject + "_val.csv"), header=None
             )
 
-        cors, _, probs = mmlu_eval(args, subject, model, tokenizer, dev_df, test_df)
+        cors, _, probs = mmlu_eval(args, subject, model, tokenizer, dev_df, test_df, device)
         subcats = subcategories[subject]
         for subcat in subcats:
             subcat_cors[subcat].append(cors)
@@ -165,7 +175,6 @@ def main(args):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--ntrain", "-k", type=int, default=5)
-    parser.add_argument("--ngpu", "-g", type=int, default=8)
     parser.add_argument("--data_dir", "-d", type=str, default="data")
     parser.add_argument("--save_dir", "-s", type=str, default="results")
     parser.add_argument(
@@ -175,10 +184,6 @@ if __name__ == "__main__":
     )
     parser.add_argument(
         "--do_test",
-        action="store_true"
-    )
-    parser.add_argument(
-        "--load_in_4bit",
         action="store_true"
     )
     parser.add_argument(
