@@ -29,7 +29,7 @@ def build_instruction_dataset(data_path: Union[List[str],str],
             if input_text is not None and input_text !="":
                 instruction = instruction+'\n'+input_text
             source = system_format.format(content=DEFAULT_SYSTEM_PROMPT) + user_format.format(content=instruction)
-            target = output
+            target = assistant_format.format(content=output)
 
             sources.append(source)
             targets.append(target)
