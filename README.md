@@ -16,7 +16,7 @@
 
 #### 主要内容
 
-- 🚀 开源Llama-3-Chinese基座模型和Llama-3-Chinese-Instruct指令模型
+- 🚀 开源Llama-3-Chinese基座模型和Llama-3-Chinese-Instruct指令模型（v1, v2, v3）
 - 🚀 开源了预训练脚本、指令精调脚本，用户可根据需要进一步训练或微调模型
 - 🚀 开源了alpaca_zh_51k, stem_zh_instruction, ruozhiba_gpt4 (4o/4T) 指令精调数据
 - 🚀 提供了利用个人电脑CPU/GPU快速在本地进行大模型量化和部署的教程
@@ -29,7 +29,9 @@
 
 ## 新闻
 
-**[2024/05/08]  发布Llama-3-Chinese-8B-Instruct-v2版指令模型，直接采用500万条指令数据在 [Meta-Llama-3-8B-Instruct](https://huggingface.co/meta-llama/Meta-Llama-3-8B-Instruct) 上进行精调。详情查看：[📚v2.0版本发布日志](https://github.com/ymcui/Chinese-LLaMA-Alpaca-3/releases/tag/v2.0)** 
+**[2024/05/30]  发布Llama-3-Chinese-8B-Instruct-v3版指令模型，相比v1/v2在下游任务上获得显著提升。详情查看：[📚v3.0版本发布日志](https://github.com/ymcui/Chinese-LLaMA-Alpaca-3/releases/tag/v3.0)**
+
+[2024/05/08]  发布Llama-3-Chinese-8B-Instruct-v2版指令模型，直接采用500万条指令数据在 [Meta-Llama-3-8B-Instruct](https://huggingface.co/meta-llama/Meta-Llama-3-8B-Instruct) 上进行精调。详情查看：[📚v2.0版本发布日志](https://github.com/ymcui/Chinese-LLaMA-Alpaca-3/releases/tag/v2.0)
 
 [2024/05/07]  添加预训练脚本、指令精调脚本。详情查看：[📚v1.1版本发布日志](https://github.com/ymcui/Chinese-LLaMA-Alpaca-3/releases/tag/v1.1)
 
@@ -86,18 +88,33 @@
 | 模型大小 | 8B | 8B |
 | 训练类型     | Causal-LM (CLM)           | 指令精调                                                     |
 | 训练方式 | LoRA + 全量emb/lm-head | LoRA + 全量emb/lm-head |
-| 初始化模型 | [原版Meta-Llama-3-8B](https://huggingface.co/meta-llama/Meta-Llama-3-8B) | v1: Llama-3-Chinese-8B<br/>v2: [原版Meta-Llama-3-8B-Instruct](https://huggingface.co/meta-llama/Meta-Llama-3-8B-Instruct) |
+| 初始化模型 | [原版Meta-Llama-3-8B](https://huggingface.co/meta-llama/Meta-Llama-3-8B) | v1: Llama-3-Chinese-8B<br/>v2: [原版Meta-Llama-3-8B-Instruct](https://huggingface.co/meta-llama/Meta-Llama-3-8B-Instruct)<br/>v3: mix of base/inst/inst-v2 |
 | 训练语料 | 无标注通用语料（约120GB） | 有标注指令数据（约500万条） |
 | 词表大小 | 原版词表（128,256） | 原版词表（128,256） |
 | 支持上下文长度 | 8K | 8K |
 | 输入模板              | 不需要                                                 | 需要套用Llama-3-Instruct模板 |
 | 适用场景            | 文本续写：给定上文，让模型生成下文            | 指令理解：问答、写作、聊天、交互等 |
 
+以下是Instruct版本之间的对比，**如无明确偏好，请优先使用Instruct-v3版本。**
+
+| 对比项                | Instruct-v1 | Instruct-v2 | Instruct-v3 |
+| :-------------------- | :----------------------------------------------------: | :----------------------------------------------------------: | :-------------------: |
+| 发布时间 | 2024/4/30 | 2024/5/8 | 2024/5/30 |
+| 基模型 | [原版Meta-Llama-3-8B](https://huggingface.co/meta-llama/Meta-Llama-3-8B) | [原版Meta-Llama-3-8B-Instruct](https://huggingface.co/meta-llama/Meta-Llama-3-8B-Instruct) | （见训练方式） |
+| 训练方式 | 第一阶段：120G中文语料预训练<br/>第二阶段：500万指令数据精调 | 直接使用500万指令数据精调 | 使用inst-v1, inst-v2, inst-meta进行模型融合，并经过少量指令数据的精调得到 |
+| 中文能力 | 49.3 / 51.5 | 51.6 / 51.6 | **55.2 / 54.8** |
+| 英文能力 | 63.21 | 66.68 | ? |
+| 长文本能力 | 29.6 | **46.4** | 40.5 |
+
+> [!NOTE]
+> 中文能力效果来自C-Eval (valid)；英文能力效果来自Open LLM Leaderboard (avg)；长文本能力来自LongBench (avg)；详细效果请参阅[💯模型效果](#模型效果)一节。
+
 
 ### 下载地址
 
 | 模型名称                  |                    完整版                    |                    LoRA版                    |                    GGUF版                    |
 | :------------------------ | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: |
+| **Llama-3-Chinese-8B-Instruct-v3**<br/>(指令模型) | [[🤗Hugging Face]](https://huggingface.co/hfl/llama-3-chinese-8b-instruct-v3)<br/> [[🤖ModelScope]](https://modelscope.cn/models/ChineseAlpacaGroup/llama-3-chinese-8b-instruct-v3)<br/>[[wisemodel]](https://wisemodel.cn/models/ChineseAlpacaGroup/llama-3-chinese-8b-instruct-v3) | N/A | [[🤗Hugging Face]](https://huggingface.co/hfl/llama-3-chinese-8b-instruct-v3-gguf)<br/> [[🤖ModelScope]](https://modelscope.cn/models/ChineseAlpacaGroup/llama-3-chinese-8b-instruct-v3-gguf) |
 | **Llama-3-Chinese-8B-Instruct-v2**<br/>(指令模型) | [[🤗Hugging Face]](https://huggingface.co/hfl/llama-3-chinese-8b-instruct-v2)<br/> [[🤖ModelScope]](https://modelscope.cn/models/ChineseAlpacaGroup/llama-3-chinese-8b-instruct-v2)<br/>[[wisemodel]](https://wisemodel.cn/models/ChineseAlpacaGroup/llama-3-chinese-8b-instruct-v2) | [[🤗Hugging Face]](https://huggingface.co/hfl/llama-3-chinese-8b-instruct-v2-lora)<br/> [[🤖ModelScope]](https://modelscope.cn/models/ChineseAlpacaGroup/llama-3-chinese-8b-instruct-v2-lora)<br/>[[wisemodel]](https://wisemodel.cn/models/ChineseAlpacaGroup/llama-3-chinese-8b-instruct-v2-lora) | [[🤗Hugging Face]](https://huggingface.co/hfl/llama-3-chinese-8b-instruct-v2-gguf)<br/> [[🤖ModelScope]](https://modelscope.cn/models/ChineseAlpacaGroup/llama-3-chinese-8b-instruct-v2-gguf) |
 | **Llama-3-Chinese-8B-Instruct**<br/>(指令模型) | [[🤗Hugging Face]](https://huggingface.co/hfl/llama-3-chinese-8b-instruct)<br/> [[🤖ModelScope]](https://modelscope.cn/models/ChineseAlpacaGroup/llama-3-chinese-8b-instruct)<br/>[[wisemodel]](https://wisemodel.cn/models/ChineseAlpacaGroup/llama-3-chinese-8b-instruct) | [[🤗Hugging Face]](https://huggingface.co/hfl/llama-3-chinese-8b-instruct-lora)<br/> [[🤖ModelScope]](https://modelscope.cn/models/ChineseAlpacaGroup/llama-3-chinese-8b-instruct-lora)<br/>[[wisemodel]](https://wisemodel.cn/models/ChineseAlpacaGroup/llama-3-chinese-8b-instruct-lora) | [[🤗Hugging Face]](https://huggingface.co/hfl/llama-3-chinese-8b-instruct-gguf)<br/> [[🤖ModelScope]](https://modelscope.cn/models/ChineseAlpacaGroup/llama-3-chinese-8b-instruct-gguf) |
 | **Llama-3-Chinese-8B**<br/>(基座模型) | [[🤗Hugging Face]](https://huggingface.co/hfl/llama-3-chinese-8b)<br/> [[🤖ModelScope]](https://modelscope.cn/models/ChineseAlpacaGroup/llama-3-chinese-8b)<br/>[[wisemodel]](https://wisemodel.cn/models/ChineseAlpacaGroup/llama-3-chinese-8b) | [[🤗Hugging Face]](https://huggingface.co/hfl/llama-3-chinese-8b-lora)<br/> [[🤖ModelScope]](https://modelscope.cn/models/ChineseAlpacaGroup/llama-3-chinese-8b-lora)<br/>[[wisemodel]](https://wisemodel.cn/models/ChineseAlpacaGroup/llama-3-chinese-8b-lora) | [[🤗Hugging Face]](https://huggingface.co/hfl/llama-3-chinese-8b-gguf)<br/> [[🤖ModelScope]](https://modelscope.cn/models/ChineseAlpacaGroup/llama-3-chinese-8b-gguf) |
@@ -110,7 +127,7 @@
   - v2基模型：原版[Meta-Llama-3-8B-Instruct](https://huggingface.co/meta-llama/Meta-Llama-3-8B-Instruct)
 - **GGUF模型**：[llama.cpp](https://github.com/ggerganov/llama.cpp)推出的量化格式，适配ollama等常见推理工具，推荐只需要做推理部署的用户下载；模型名后缀为`-im`表示使用了importance matrix进行量化，通常具有更低的PPL，建议使用（用法与常规版相同）
 > [!NOTE]
-> 若无法访问HF，可考虑一些镜像站点（如[hf-mirror.com](hf-mirror.com)），具体方法请自行查找解决。
+> 若无法访问HF，可考虑一些镜像站点（如hf-mirror.com），具体方法请自行查找解决。
 
 ## 推理与部署
 
@@ -145,6 +162,7 @@
 
 | Models             | Valid (0-shot) | Valid (5-shot) | Test (0-shot) | Test (5-shot) |
 | ------------------------ | :-----------: | :-----------: | :-----------: | :-----------: |
+| **Llama-3-Chinese-8B-Instruct-v3** | 55.2 | 54.8 | 52.1 | 52.4 |
 | **Llama-3-Chinese-8B-Instruct-v2** | 51.6 | 51.6 | 49.7 | 49.8 |
 | **Llama-3-Chinese-8B-Instruct** | 49.3 | 51.5 | 48.3 | 49.4 |
 | **Llama-3-Chinese-8B** | 47.0 | 50.5 | 46.1 | 49.0 |
@@ -161,6 +179,7 @@
 
 | Models             | Test (0-shot) | Test (5-shot) |
 | ------------------------ | :-----------: | :-----------: |
+| **Llama-3-Chinese-8B-Instruct-v3** | 54.4 | 54.8 |
 | **Llama-3-Chinese-8B-Instruct-v2** | 51.8 | 52.4 |
 | **Llama-3-Chinese-8B-Instruct** | 49.7 | 51.5 |
 | **Llama-3-Chinese-8B** | 48.0 | 50.9 |
@@ -177,6 +196,7 @@
 
 | Models             | Valid (0-shot) | Valid (5-shot) | Test (0-shot) | Test (5-shot) |
 | ------------------------ | :-----------: | :-----------: | :-----------: | :-----------: |
+| **Llama-3-Chinese-8B-Instruct-v3** | 64.7 | 65.0 | 64.8 | 65.9 |
 | **Llama-3-Chinese-8B-Instruct-v2** | 62.1 | 63.9 | 62.6 | 63.7 |
 | **Llama-3-Chinese-8B-Instruct** | 60.1 | 61.3 | 59.8 | 61.8 |
 | **Llama-3-Chinese-8B** | 55.5 | 58.5 | 57.3 | 61.1 |
@@ -193,6 +213,7 @@
 
 | Models                                                       | 单文档QA | 多文档QA | 摘要 | FS学习 | 代码 | 合成 | 平均 |
 | ------------------------------------------------------------ | :------: | :------: | :--: | :----: | :--: | :--: | :--: |
+| **Llama-3-Chinese-8B-Instruct-v3**                           |   20.3   |   28.8   | 24.5 |  28.1  | 59.4 | 91.9 | 40.5 |
 | **Llama-3-Chinese-8B-Instruct-v2**                           |   57.3   |   27.1   | 13.9 |  30.3  | 60.6 | 89.5 | 46.4 |
 | **Llama-3-Chinese-8B-Instruct**                              |   44.1   |   24.0   | 12.4 |  33.5  | 51.8 | 11.5 | 29.6 |
 | **Llama-3-Chinese-8B**                                       |   16.4   |   19.3   | 4.3  |  28.7  | 14.3 | 4.6  | 14.6 |
@@ -211,6 +232,7 @@
 
 | Models                                                       |  ARC  | HellaS | MMLU  |  TQA  | WinoG | GSM8K | 平均  |
 | ------------------------------------------------------------ | :---: | :----: | :---: | :---: | :---: | :---: | :---: |
+| **Llama-3-Chinese-8B-Instruct-v3**                           |   ?   |   ?    |   ?   |   ?   |   ?   |   ?   |   ?   |
 | **Llama-3-Chinese-8B-Instruct-v2**                           | 62.63 | 79.72  | 66.48 | 53.93 | 76.72 | 60.58 | 66.68 |
 | **Llama-3-Chinese-8B-Instruct**                              | 61.26 | 80.24  | 63.10 | 55.15 | 75.06 | 44.43 | 63.21 |
 | **Llama-3-Chinese-8B**                                       | 55.88 | 79.53  | 63.70 | 41.14 | 77.03 | 37.98 | 59.21 |
@@ -281,7 +303,7 @@
 问题5：为什么不对模型做全量预训练而是用LoRA？
 问题6：为什么Llama-3-Chinese对话效果不好？
 问题7：为什么指令模型会回复说自己是ChatGPT？
-问题8：Instrcut模型的v1（原版）和v2有什么区别？
+问题8：Instruct模型的v1（原版）和v2有什么区别？
 ```
 
 ## 免责声明
