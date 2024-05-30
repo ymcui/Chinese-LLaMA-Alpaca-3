@@ -11,6 +11,11 @@
     <img alt="GitHub top language" src="https://img.shields.io/github/languages/top/ymcui/Chinese-LLaMA-Alpaca-3">
     <a href="https://app.codacy.com/gh/ymcui/Chinese-LLaMA-Alpaca-3/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade"><img src="https://app.codacy.com/project/badge/Grade/142d688425494644b5b156068f55370d"/></a>
 </p>
+<p align="center">
+    <a href="https://huggingface.co/hfl">[🤗Hugging Face]</a>
+    <a href="https://modelscope.cn/profile/ChineseAlpacaGroup">[🤖ModelScope]</a>
+    <a href="https://huggingface.co/spaces/hfl-rc/llama-3-chinese-8b-instruct-demo">[🤗 Online Demo]</a>
+</p>
 
 This project is developed based on Meta's newly released next-generation open-source large language model [Llama-3](https://github.com/facebookresearch/llama3) and is the third generation of the Chinese-LLaMA-Alpaca open-source LLM series ([1st gen](https://github.com/ymcui/Chinese-LLaMA-Alpaca), [2nd gen](https://github.com/ymcui/Chinese-LLaMA-Alpaca-2)). This project has open-sourced **the Llama-3-Chinese base model and the Chinese Llama-3-Chinese-Instruct instruction-tuned large model**. These models use large-scale Chinese data for continual pre-training on the original Llama-3, and are fine-tuned with selected instruction data to further enhance Chinese basic semantic and instruction understanding capabilities, significantly improving performance compared to the second-generation models.
 
