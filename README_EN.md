@@ -88,7 +88,7 @@ Here's a comparison of the models in this project and recommended usage scenario
 | Model Size              | 8B                                      | 8B                                               |
 | Training Type           | Causal-LM (CLM)                         | Instruction Fine-Tuning                          |
 | Training Method         | LoRA + Full emb/lm-head                 | LoRA + Full emb/lm-head                          |
-| Initial Model           | [Meta-Llama-3-8B](https://huggingface.co/meta-llama/Meta-Llama-3-8B) | v1: Llama-3-Chinese-8B<br/>v2: [Meta-Llama-3-8B-Instruct](https://huggingface.co/meta-llama/Meta-Llama-3-8B-Instruct)<br/>v3: mix of base/inst/inst-v2 |
+| Initial Model           | [Meta-Llama-3-8B](https://huggingface.co/meta-llama/Meta-Llama-3-8B) | v1: Llama-3-Chinese-8B<br/>v2: [Meta-Llama-3-8B-Instruct](https://huggingface.co/meta-llama/Meta-Llama-3-8B-Instruct)<br/>v3: mix of inst/inst-v2/inst-meta |
 | Training Corpus         | Unlabeled general corpus (approx. 120GB) | Labeled instruction data (approx. 5 million entries) |
 | Vocabulary Size         | Original vocabulary (128,256)           | Original vocabulary (128,256)                    |
 | Supported Context Length | 8K                                      | 8K                                               |
@@ -97,14 +97,15 @@ Here's a comparison of the models in this project and recommended usage scenario
 
 Here is a comparison between different versions of Instruct. **Unless there is a clear preference, please prioritize using the Instruct-v3 version.**
 
-| Comparison Item      |                         Instruct-v1                          |                         Instruct-v2                          |                         Instruct-v3                          |
-| :------------------- | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: |
-| Release Date         |                          2024/4/30                           |                           2024/5/8                           |                          2024/5/30                           |
-| Base Model           | [Original Meta-Llama-3-8B](https://huggingface.co/meta-llama/Meta-Llama-3-8B) | [Original Meta-Llama-3-8B-Instruct](https://huggingface.co/meta-llama/Meta-Llama-3-8B-Instruct) |                    (See Training Method)                     |
-| Training Method      | First Stage: Pre-training with 120G Chinese Corpus<br/>Second Stage: Fine-tuning with 5 million instruction data |      Direct fine-tuning with 5 million instruction data      | Model merging using inst-v1, inst-v2, and inst-meta, followed by fine-tuning with a small amount of instruction data |
-| Chinese Proficiency  |                         49.3 / 51.5                          |                         51.6 / 51.6                          |                         55.2 / 54.8                          |
-| English Proficiency  |                            63.21                             |                            66.68                             |                              ?                               |
-| Long Text Capability |                             29.6                             |                             46.4                             |                             40.5                             |
+| Comparison Item          |                         Instruct-v1                          |                         Instruct-v2                          |                         Instruct-v3                          |
+| :----------------------- | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: |
+| Release Date             |                          2024/4/30                           |                           2024/5/8                           |                          2024/5/30                           |
+| Base Model               | [Original Meta-Llama-3-8B](https://huggingface.co/meta-llama/Meta-Llama-3-8B) | [Original Meta-Llama-3-8B-Instruct](https://huggingface.co/meta-llama/Meta-Llama-3-8B-Instruct) |                    (See Training Method)                     |
+| Training Method          | First Stage: Pre-training with 120G Chinese Corpus<br/>Second Stage: Fine-tuning with 5 million instruction data |      Direct fine-tuning with 5 million instruction data      | Model merging using inst-v1, inst-v2, and inst-meta, followed by fine-tuning with a small amount of instruction data |
+| Chinese Proficiency      |                         49.3 / 51.5                          |                         51.6 / 51.6                          |                      **55.2 / 54.8** 👍🏻                      |
+| English Proficiency      |                            63.21                             |                            66.68                             |                         **66.81** 👍🏻                         |
+| Long Text Capability     |                             29.6                             |                         **46.4** 👍🏻                          |                             40.5                             |
+| LLM Arena Win Rate / Elo |                         49.4% / 1430                         |                         66.1% / 1559                         |                     **83.6% / 1627** 👍🏻                      |
 
 > [!NOTE]
 > Chinese proficiency results are from C-Eval (valid); English proficiency results are from Open LLM Leaderboard (avg); long text capability results are from LongBench (avg). For detailed performance, please refer to the [💯 Model Performance](#模型效果) section.
@@ -232,7 +233,7 @@ To evaluate the effectiveness of the related models, this project conducted both
 
 | Models                                                       |  ARC  | HellaS | MMLU  |  TQA  | WinoG | GSM8K | Average |
 | ------------------------------------------------------------ | :---: | :----: | :---: | :---: | :---: | :---: | :-----: |
-| **Llama-3-Chinese-8B-Instruct-v3**                           |   ?   |   ?    |   ?   |   ?   |   ?   |   ?   |    ?    |
+| **Llama-3-Chinese-8B-Instruct-v3**                           | 63.40 | 80.51  | 67.90 | 53.57 | 76.24 | 59.21 |  66.81  |
 | **Llama-3-Chinese-8B-Instruct-v2**                           | 62.63 | 79.72  | 66.48 | 53.93 | 76.72 | 60.58 |  66.68  |
 | **Llama-3-Chinese-8B-Instruct**                              | 61.26 | 80.24  | 63.10 | 55.15 | 75.06 | 44.43 |  63.21  |
 | **Llama-3-Chinese-8B**                                       | 55.88 | 79.53  | 63.70 | 41.14 | 77.03 | 37.98 |  59.21  |
