@@ -11,6 +11,11 @@
     <img alt="GitHub top language" src="https://img.shields.io/github/languages/top/ymcui/Chinese-LLaMA-Alpaca-3">
     <a href="https://app.codacy.com/gh/ymcui/Chinese-LLaMA-Alpaca-3/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade"><img src="https://app.codacy.com/project/badge/Grade/142d688425494644b5b156068f55370d"/></a>
 </p>
+<p align="center">
+    <a href="https://huggingface.co/hfl">[🤗Hugging Face]</a>
+    <a href="https://modelscope.cn/profile/ChineseAlpacaGroup">[🤖ModelScope]</a>
+    <a href="https://huggingface.co/spaces/hfl-rc/llama-3-chinese-8b-instruct-demo">[🤗 在线 Demo]</a>
+</p>
 
 本项目基于Meta最新发布的新一代开源大模型[Llama-3](https://github.com/facebookresearch/llama3)开发，是Chinese-LLaMA-Alpaca开源大模型相关系列项目（[一期](https://github.com/ymcui/Chinese-LLaMA-Alpaca)、[二期](https://github.com/ymcui/Chinese-LLaMA-Alpaca-2)）的第三期。本项目开源了**中文Llama-3基座模型和中文Llama-3-Instruct指令精调大模型**。这些模型在原版Llama-3的基础上使用了大规模中文数据进行增量预训练，并且使用精选指令数据进行精调，进一步提升了中文基础语义和指令理解能力，相比二代相关模型获得了显著性能提升。
 
