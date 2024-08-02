@@ -315,6 +315,32 @@
 问题8：Instruct模型的v1（原版）和v2有什么区别？
 ```
 
+## 引用
+
+如果您使用了本项目的相关资源，请参考引用本项目的技术报告：https://arxiv.org/abs/2304.08177
+
+```
+@article{chinese-llama-alpaca,
+    title={Efficient and Effective Text Encoding for Chinese LLaMA and Alpaca},
+    author={Cui, Yiming and Yang, Ziqing and Yao, Xin},
+    journal={arXiv preprint arXiv:2304.08177},
+    url={https://arxiv.org/abs/2304.08177},
+    year={2023}
+}
+```
+
+针对是否扩充词表的分析，可参考引用：https://arxiv.org/abs/2403.01851
+
+```
+@article{chinese-mixtral,
+      title={Rethinking LLM Language Adaptation: A Case Study on Chinese Mixtral}, 
+      author={Cui, Yiming and Yao, Xin},
+      journal={arXiv preprint arXiv:2403.01851},
+      url={https://arxiv.org/abs/2403.01851},
+      year={2024}
+}
+```
+
 ## 免责声明
 
 本项目基于由Meta发布的Llama-3模型进行开发，使用过程中请严格遵守Llama-3的[开源许可协议](https://github.com/meta-llama/llama3/blob/main/LICENSE)。如果涉及使用第三方代码，请务必遵从相关的开源许可协议。模型生成的内容可能会因为计算方法、随机因素以及量化精度损失等影响其准确性，因此，本项目不对模型输出的准确性提供任何保证，也不会对任何因使用相关资源和输出结果产生的损失承担责任。如果将本项目的相关模型用于商业用途，开发者应遵守当地的法律法规，确保模型输出内容的合规性，本项目不对任何由此衍生的产品或服务承担责任。

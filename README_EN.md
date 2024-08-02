@@ -314,6 +314,32 @@ Question 7: Why does the instruction model reply saying it is ChatGPT?
 Question 8: What are the differences between v1 and v2 of the Instruct model?
 ```
 
+## Citation
+
+Please consider cite our work if you use the resources in this project.
+
+```
+@article{chinese-llama-alpaca,
+    title={Efficient and Effective Text Encoding for Chinese LLaMA and Alpaca},
+    author={Cui, Yiming and Yang, Ziqing and Yao, Xin},
+    journal={arXiv preprint arXiv:2304.08177},
+    url={https://arxiv.org/abs/2304.08177},
+    year={2023}
+}
+```
+
+For analysis of vocabulary extension, please consider cite following paper.
+
+```
+@article{chinese-mixtral,
+      title={Rethinking LLM Language Adaptation: A Case Study on Chinese Mixtral}, 
+      author={Cui, Yiming and Yao, Xin},
+      journal={arXiv preprint arXiv:2403.01851},
+      url={https://arxiv.org/abs/2403.01851},
+      year={2024}
+}
+```
+
 ## Disclaimer
 
 This project is developed based on Meta's Llama-3 model. Please strictly adhere to the Llama-3 [open-source license agreement](https://github.com/meta-llama/llama3/blob/main/LICENSE) during use. If using third-party code, comply with the relevant open-source licenses. The accuracy of the model-generated content may be affected by computational methods, random factors, and loss of quantization precision, hence, no guarantees are provided regarding the accuracy of model outputs, nor will any liability be accepted for losses resulting from the use of related resources and outputs. If using the models for commercial purposes, developers must comply with local laws and regulations to ensure the legality of the model outputs. No responsibility will be taken for any products or services derived from this project.
