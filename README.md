@@ -354,3 +354,7 @@
 - 提交问题请使用本项目设置的Issue模板，以帮助快速定位具体问题。
 - 重复以及与本项目无关的issue会被[stable-bot](https://github.com/marketplace/stale)处理，敬请谅解。
 
+## 关注我们
+欢迎关注微信公众号"**涌现志**"，了解最新的技术动态。
+
+![qrcode.png](https://ymcui.com/images/qrcode.jpg)
